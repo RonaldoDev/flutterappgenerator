@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
 import { Container, Box } from '@material-ui/core';
-import Editable from './editable'
+import EditorGUI from './editorGUI'
 
-class EditableContainer extends Component {
+class EditorGUIContainer extends Component {
     constructor(){
         super();
         this.state = {
@@ -12,11 +12,11 @@ class EditableContainer extends Component {
     }
 
     render() {
-        return  <Editable />
+        return  <EditorGUI />
             
            
       
     }
 }
 
-export default EditableContainer;
+export default EditorGUIContainer;
