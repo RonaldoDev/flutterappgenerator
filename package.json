@@ -1,9 +1,0 @@
-{
-  "name": "flutterAppGenerator",
-  "version": "0.1",
-  "description": "Flutter app generator using a graphic user interface to drag and drop components",
-  "main": "index.js",
-  "repository": "github.com/ronaldodev/fluttergenerator",
-  "author": "Ronaldo Albert Spranger",
-  "license": "MIT"
-}
