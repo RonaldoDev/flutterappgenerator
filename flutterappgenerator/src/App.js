@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import LayoutGeneratorContainer from './layout/layoutGenerator.container';
+import LayoutGeneratorContainer from './layoutEditor/layoutGenerator.container';
 
 function App() {
   return (
