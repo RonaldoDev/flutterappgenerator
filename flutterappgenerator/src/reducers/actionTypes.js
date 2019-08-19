@@ -1,0 +1,5 @@
+
+
+export const ADD_COMPONENT = "ADD_COMPONENT"
+
+export const UPDATE_COMPONENTS = "UPDATE_COMPONENTS"

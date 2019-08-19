@@ -1,15 +1,35 @@
-import React, { Component, createContext, useState } from 'react';
-import ReactDOM from 'react-dom';
-    
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { getComponentList } from '../../reducers/selectors';
+import { addComponent } from './components.actions';    
 import ComponentList from './componentList';
-
+import { arrayOf, func, string } from 'prop-types';
+import getComponent from './components';
 
 class ComponentListContainer extends Component {
-    constructor(){
-        super();
-    }
+    handleAddComponent = (componentType) => {
+        const component = getComponent(componentType);
+        const comp = { component : component, id: component.i, type: componentType};
+        this.props.addComponent(comp);
+    };
     render(){
-        return (<ComponentList />)
+        const { componentList } = this.props;
+        return (<ComponentList components={componentList} addComponent={this.handleAddComponent} />)
     }
 }
-export default ComponentListContainer
+
+ComponentListContainer.propTypes = {
+    componentList: arrayOf(string),
+    addComponent: func
+}
+
+const mapStateToPros = state => {
+    const componentList = getComponentList(state);
+    return { componentList };
+}
+
+const mapDispatchToProps = dispatch => 
+    bindActionCreators({ addComponent }, dispatch);
+
+export default connect(mapStateToPros, mapDispatchToProps)(ComponentListContainer);

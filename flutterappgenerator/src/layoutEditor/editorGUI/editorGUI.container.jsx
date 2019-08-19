@@ -1,22 +1,34 @@
 import React, { Component } from 'react';
-import ReactDom from 'react-dom';
-import { Container, Box } from '@material-ui/core';
-import EditorGUI from './editorGUI'
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { updateComponent } from './editorGUI.actions';
+import EditorGUI from './editorGUI';
+import { getComponentsToRender } from './editorGUI.selectors';
+import { arrayOf, func, object } from 'prop-types';
 
 class EditorGUIContainer extends Component {
-    constructor(){
-        super();
-        this.state = {
-            result : 0
-        }
+    handleUpdateComponents = (components) => {
+        this.props.updateComponent(components);
     }
 
     render() {
-        return  <EditorGUI />
-            
-           
-      
+        const { componentList } = this.props;
+        return  <EditorGUI components={componentList} updateComponent={this.handleUpdateComponents} />    
     }
 }
 
-export default EditorGUIContainer;
+EditorGUIContainer.propTypes = {
+    componentList: arrayOf(object),
+    updateComponent: func.isRequired
+}
+
+const mapStateToPros = state => {
+    const componentList = getComponentsToRender(state);
+    return { componentList };
+}
+
+const mapDispatchToProps = dispatch => 
+    bindActionCreators({ updateComponent }, dispatch);
+
+
+export default connect(mapStateToPros, mapDispatchToProps)(EditorGUIContainer);

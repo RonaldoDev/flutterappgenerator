@@ -1,13 +1,8 @@
-import React, { Component, createContext } from 'react';
-import ReactDOM from 'react-dom';
-    
+import React, { Component } from 'react';
 import LayoutGenerator from './layoutGenerator';
 
 
 class LayoutGeneratorContainer extends Component {
-    constructor(){
-        super();
-    }
     render(){
         return (<LayoutGenerator />)
     }
