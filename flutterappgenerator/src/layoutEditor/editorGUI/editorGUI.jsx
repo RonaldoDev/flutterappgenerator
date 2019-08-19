@@ -1,43 +1,97 @@
 import React, { Component } from 'react';
-import ReactDom from 'react-dom';
-import { Container, TextField } from '@material-ui/core';
-import { DraggableCore } from 'react-draggable';
-import { Resizable, ResizableBox } from 'react-resizable';
+import { Container, TextField, Button, Checkbox, Select, AppBar, MenuItem } from '@material-ui/core';
 import ReactGridLayout from 'react-grid-layout';
 import "react-grid-layout/css/styles.css";
 import './style.css';
+import { arrayOf, func, number, object, string } from 'prop-types';
 
 
 
 class EditorGUI extends Component {
-  static defaultProps = {
-    className: "layout",
-    items: 20,
-    rowHeight: 30,
-    onLayoutChange: function() {},
-    cols: 4
+  constructor(){
+    super();
+    this.onLayoutChange = this.onLayoutChange.bind(this)
+}
+  onLayoutChange = (layout) => {
+    const { components, updateComponent } = this.props
+    const componentPositions = components.reduce((layouts, component) => {
+      layout.forEach(item => {
+        if (component.id === item.i) {
+          layouts.push({...component, component: item});
+        }
+      })
+      return layouts;
+    }, []);
+    updateComponent(componentPositions)
   };
-  
-  renderItems() {
-        return (<div key="b">
-             <TextField style={{width:'100%'}}
-               id="standard-name"
-               label="Name"
-               margin="normal"
-               /></div>)
-    };
+  renderItems(item) {
+    switch(item.type) {
+      case 'button':
+        return (
+          <div key={item.id}>
+            <Button disabled style={{width:'100%'}} variant="contained">
+              Default
+            </Button>
+          </div>);
+      case 'text':
+        return (
+          <div key={item.id}>
+            <TextField disabled style={{width:'100%'}}
+              id="standard-name"
+              label="TextField"
+            />
+          </div>);
+      case 'check':
+        return (
+          <div key={item.id}>
+            <Checkbox
+              disabled
+              value="checkedA"
+              inputProps={{
+                'aria-label': 'primary checkbox',
+              }}
+          />
+        </div>);
+      case 'appbar':
+        return (
+          <div key={item.id}>
+            <AppBar style={{width:'100%'}} disabled >
+              toolbar
+              {/* <Toolbar style={{width:'100%'}}>
+                <Typography variant="h6" >
+                  AppBar
+                </Typography>
+              </Toolbar> */}
+            </AppBar>
+        </div>);
+      case 'select':
+        return (
+          <div key={item.id}>
+            <Select
+              style={{width:'100%'}}
+              inputProps={{
+                name: 'AppBar',
+                id: 'age-simple',
+              }}
+            >
+              <MenuItem value={10}>Ten</MenuItem>
+              <MenuItem value={20}>Twenty</MenuItem>
+              <MenuItem value={30}>Thirty</MenuItem>
+            </Select>
+         </div>);
+      default:
+        return null;
+    }
+  };
     render() {
-        const dragHandlers = {onStart: this.onStart, onStop: this.onStop};
-        var layout = [
-            // {i: 'a', x: 0, y: 0, w: 1, h: 2, static: true},
-            {i: 'b', x: 1, y: 0, w: 3, h: 2, minW: 2, maxW: 4},
-            // {i: 'c', x: 4, y: 0, w: 1, h: 2}
-          ];
+        const { components } = this.props;
+        const layout = components.map(item => item.component);
           return (
             <Container maxWidth="lg">
             <div className="phone">
              <div className="screen">        
                 <ReactGridLayout cols={4}
+                            onLayoutChange={this.onLayoutChange}
                             rowHeight={40}
                             width={300}
                             static={false}
@@ -47,39 +101,31 @@ class EditorGUI extends Component {
                             preventCollision={true}
                             isResizable={true}
                             className="layout" maxRows={20} layout={layout} >
-                {this.renderItems()}
+                {components.map(item => this.renderItems(item))}
                 </ReactGridLayout>
              </div>
              </div>
              </Container>
           )
-        // return (
-        //                 {/* <DraggableCore bounds="parent"> */}
-        //                 <ResizableBox className="box" width={200} height={50} draggableOpts={{
-        //     grid: [25, 25],
-        //     onStart: function() {console.log('drag start')},
-        //     onDrag: function() {console.log('drag')},
-        //     onStop: function() {console.log('drag stop')}
-        //   }} axis="x">
-        //                     <TextField
-        //                     id="standard-name"
-        //                     label="Name"
-        //                     margin="normal"
-        //                     />
-        //                 </ResizableBox>
-        //                 {/* </DraggableCore> */}
-        //         </div>
-        //     </div>
-        //   );
-        // <div key="a">a</div>
-        // <div key="b">
-        //     <TextField style={{width:'100%'}}
-        //       id="standard-name"
-        //       label="Name"
-        //       margin="normal"
-        //       /></div>
-        // <div key="c">c</div>
     }
+}
+
+EditorGUI.defaultProps = {
+  components: [],
+  className: "layout",
+  items: 20,
+  rowHeight: 30,
+  onLayoutChange: func,
+  cols: 4
+}
+EditorGUI.propTypes = {
+  components: arrayOf(object),
+  updateComponent: func.isRequired,
+  className: string,
+  items: number,
+  rowHeight: number,
+  onLayoutChange: func,
+  cols: number
 }
 
 export default EditorGUI;

@@ -1,11 +1,8 @@
+import { Grid } from '@material-ui/core';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import ReactDom from 'react-dom';
-import { Grid, Box } from '@material-ui/core';
-import ActionMenuContainer from './nav/actionMenu.container'
-import ComponentListContainer from './component/componentList.container'
-import EditableContainer from './editorGUI/editorGUI.container'
-import { makeStyles } from '@material-ui/core/styles';
+import ComponentListContainer from './component/componentList.container';
+import EditableContainer from './editorGUI/editorGUI.container';
 
 
 class LayoutGenerator extends Component {
