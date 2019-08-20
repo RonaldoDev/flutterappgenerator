@@ -11,6 +11,7 @@ class EditorGUI extends Component {
   constructor(){
     super();
     this.onLayoutChange = this.onLayoutChange.bind(this)
+    this.deleteItem = this.deleteItem.bind(this)
 }
   onLayoutChange = (layout) => {
     const { components, updateComponent } = this.props
@@ -24,6 +25,18 @@ class EditorGUI extends Component {
     }, []);
     updateComponent(componentPositions)
   };
+  deleteItem = (id) => {
+    const { components, updateComponent } = this.props
+    const componentPositions = components.reduce((componentList, component) => {
+      
+      if (component.id !== id) {
+        componentList.push({...component});
+      }
+    
+      return componentList;
+    }, []);
+    updateComponent(componentPositions);
+  }
   renderItems(item) {
     switch(item.type) {
       case 'button':
@@ -32,6 +45,10 @@ class EditorGUI extends Component {
             <Button disabled style={{width:'100%'}} variant="contained">
               Default
             </Button>
+            <div>
+              <span className="settings-tooltip" onClick={() => {}}></span>
+              <span className="delete-tooltip" onClick={() => this.deleteItem(item.id)}></span>
+            </div>
           </div>);
       case 'text':
         return (
@@ -40,6 +57,10 @@ class EditorGUI extends Component {
               id="standard-name"
               label="TextField"
             />
+            <div style={{width:'100%'}}>
+              <span className="settings-tooltip" onClick={() => {}}></span>
+              <span className="delete-tooltip" onClick={() => this.deleteItem(item.id)}></span>
+            </div>
           </div>);
       case 'check':
         return (
@@ -51,6 +72,10 @@ class EditorGUI extends Component {
                 'aria-label': 'primary checkbox',
               }}
           />
+              <div>
+                <span className="settings-tooltip" onClick={() => {}}></span>
+                <span className="delete-tooltip" onClick={() => this.deleteItem(item.id)}></span>
+              </div>
         </div>);
       case 'appbar':
         return (
@@ -59,15 +84,20 @@ class EditorGUI extends Component {
               toolbar
               {/* <Toolbar style={{width:'100%'}}>
                 <Typography variant="h6" >
-                  AppBar
+                AppBar
                 </Typography>
               </Toolbar> */}
             </AppBar>
+              <div>
+                <span className="settings-tooltip" onClick={() => {}}></span>
+                <span className="delete-tooltip" onClick={() => this.deleteItem(item.id)}></span>
+              </div>
         </div>);
       case 'select':
         return (
           <div key={item.id}>
             <Select
+              disabled
               style={{width:'100%'}}
               inputProps={{
                 name: 'AppBar',
@@ -78,6 +108,10 @@ class EditorGUI extends Component {
               <MenuItem value={20}>Twenty</MenuItem>
               <MenuItem value={30}>Thirty</MenuItem>
             </Select>
+            <div>
+              <span className="settings-tooltip" onClick={() => {}}></span>
+              <span className="delete-tooltip" onClick={() => this.deleteItem(item.id)}></span>
+            </div>
          </div>);
       default:
         return null;
