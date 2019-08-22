@@ -5,6 +5,7 @@ const initialState = {
   byIds: {},
   components: ['text', 'button', 'check', 'appbar', 'select'],
   componentsRender: [],
+  views: [{ id: 0, title: "Primeira", components: []}]
 };
 
 export default function(state = initialState, action) {
