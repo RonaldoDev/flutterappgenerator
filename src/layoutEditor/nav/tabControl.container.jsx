@@ -1,22 +1,44 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { bindActionCreators } from 'redux';
-// import { getComponentList } from '../../reducers/selectors';
-// import { addComponent } from './components.actions';    
+import { bindActionCreators } from 'redux';
+import { getCurrentTab, getViews } from './nav.selectors';
+import { addView, saveViews, selectTab } from './nav.actions';
 import TabControl from './tabControl';
 // import { arrayOf, func, string } from 'prop-types';
 // import getComponent from './components';
 
 class TabControlContainer extends Component {
-    // handleAddComponent = (componentType) => {
-    //     const component = getComponent(componentType);
-    //     const comp = { component : component, id: component.i, type: componentType};
-    //     this.props.addComponent(comp);
-    // };
-    render(){
-        // const { componentList } = this.props;
-        return (<TabControl />)
+  constructor() {
+    super();
+    this.state = {
+      a : 0
     }
+  }
+  saveView = () => {
+    const newViews = this.props.views.reduce((total, view) => {
+      if (view.id === this.props.currentTab.id) {
+        total.push({...view, components : this.props.currentTab.components});
+        return total;
+      }
+      total.push(view);
+      return total;
+    }, []);
+    this.props.saveViews(newViews);
+  }
+  handleSelectTab = (tabId) => {
+    this.saveView();
+    this.props.views.forEach((view) => view.id === tabId ? this.props.selectTab(view) : null);
+  };
+  handleAddView = () => {
+    const { addView, views } = this.props;
+    const newView = { id: views.length, title: `view${views.length}`, components: [], selectedComponent: {}}
+    addView(newView);
+  }
+
+  render() {
+    const { views, currentTab } = this.props;
+    return (<TabControl views={views} currentTab={currentTab} selectTab={this.handleSelectTab} addView={this.handleAddView} />)
+  }
 }
 
 // ActionMenuContainer.propTypes = {
@@ -24,12 +46,13 @@ class TabControlContainer extends Component {
 //     addComponent: func
 // }
 
-// const mapStateToPros = state => {
-//     const componentList = getComponentList(state);
-//     return { componentList };
-// }
+const mapStateToPros = state => {
+  const views = getViews(state);
+  const currentTab = getCurrentTab(state);
+  return { views, currentTab };
+}
 
-// const mapDispatchToProps = dispatch => 
-//     bindActionCreators({ addComponent }, dispatch);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ addView, saveViews, selectTab }, dispatch);
 
-export default connect(null, null)(TabControlContainer);
+export default connect(mapStateToPros, mapDispatchToProps)(TabControlContainer);

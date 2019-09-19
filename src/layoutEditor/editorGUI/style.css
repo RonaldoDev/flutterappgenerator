@@ -190,3 +190,16 @@ custom-box {
     height: 550px;
     border: 2px solid green;
   }
+
+  .selected {
+    border: 2px solid green;
+  }
+
+  .prop-menu {
+    background-color: white;
+    height: "100%";
+  }
+
+  #form-label {
+    color: black;
+  }

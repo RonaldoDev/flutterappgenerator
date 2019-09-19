@@ -24,7 +24,7 @@ class LayoutGenerator extends Component {
                 <ComponentListContainer />
                 </Grid>
             </Grid>
-            <Grid item> <TabControlContianer /></Grid>
+            <Grid item xs={9}> <TabControlContianer /></Grid>
             </Grid>)
     }
 }

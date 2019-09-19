@@ -4,14 +4,23 @@ import ReactGridLayout from 'react-grid-layout';
 import "react-grid-layout/css/styles.css";
 import './style.css';
 import { arrayOf, func, number, object, string } from 'prop-types';
-
+import renderButton from '../component/components/button';
+import renderCheckbox from '../component/components/checkbox';
+import renderTextField from '../component/components/inputText';
+import renderAppBar from '../component/components/appbar';
+import renderSelect from '../component/components/select';
 
 
 class EditorGUI extends Component {
   constructor(){
     super();
+    this.state = {
+      selected: false,
+      text: "default",
+      cssClass: " selected",
+      color: "primary"
+    }
     this.onLayoutChange = this.onLayoutChange.bind(this)
-    this.deleteItem = this.deleteItem.bind(this)
 }
   onLayoutChange = (layout) => {
     const { components, updateComponent } = this.props
@@ -25,94 +34,30 @@ class EditorGUI extends Component {
     }, []);
     updateComponent(componentPositions)
   };
-  deleteItem = (id) => {
-    const { components, updateComponent } = this.props
-    const componentPositions = components.reduce((componentList, component) => {
-      
-      if (component.id !== id) {
-        componentList.push({...component});
+  selectItem = (id) => {
+    const { components, selectComponent } = this.props;
+    components.forEach(comp => {
+      if (comp.id === id) {
+        comp.selected = true;
+        selectComponent(comp.componente);
       }
-    
-      return componentList;
-    }, []);
-    updateComponent(componentPositions);
+      else
+        comp.selected = false;
+     });
+     this.setState({ isSelected: true })
   }
   renderItems(item) {
     switch(item.type) {
       case 'button':
-        return (
-          <div key={item.id}>
-            <Button disabled style={{width:'100%'}} variant="contained">
-              Default
-            </Button>
-            <div>
-              <span className="settings-tooltip" onClick={() => {}}></span>
-              <span className="delete-tooltip" onClick={() => this.deleteItem(item.id)}></span>
-            </div>
-          </div>);
+        return renderButton({ item, selectItem: this.selectItem });
       case 'text':
-        return (
-          <div key={item.id}>
-            <TextField disabled style={{width:'100%'}}
-              id="standard-name"
-              label="TextField"
-            />
-            <div style={{width:'100%'}}>
-              <span className="settings-tooltip" onClick={() => {}}></span>
-              <span className="delete-tooltip" onClick={() => this.deleteItem(item.id)}></span>
-            </div>
-          </div>);
+        return renderTextField({ item, selectItem: this.selectItem });
       case 'check':
-        return (
-          <div key={item.id}>
-            <Checkbox
-              disabled
-              value="checkedA"
-              inputProps={{
-                'aria-label': 'primary checkbox',
-              }}
-          />
-              <div>
-                <span className="settings-tooltip" onClick={() => {}}></span>
-                <span className="delete-tooltip" onClick={() => this.deleteItem(item.id)}></span>
-              </div>
-        </div>);
+        return renderCheckbox({ item, selectItem: this.selectItem });
       case 'appbar':
-        return (
-          <div key={item.id}>
-            <AppBar style={{width:'100%'}} disabled >
-              toolbar
-              {/* <Toolbar style={{width:'100%'}}>
-                <Typography variant="h6" >
-                AppBar
-                </Typography>
-              </Toolbar> */}
-            </AppBar>
-              <div>
-                <span className="settings-tooltip" onClick={() => {}}></span>
-                <span className="delete-tooltip" onClick={() => this.deleteItem(item.id)}></span>
-              </div>
-        </div>);
+        return renderAppBar({ item, selectItem: this.selectItem });
       case 'select':
-        return (
-          <div key={item.id}>
-            <Select
-              disabled
-              style={{width:'100%'}}
-              inputProps={{
-                name: 'AppBar',
-                id: 'age-simple',
-              }}
-            >
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
-            </Select>
-            <div>
-              <span className="settings-tooltip" onClick={() => {}}></span>
-              <span className="delete-tooltip" onClick={() => this.deleteItem(item.id)}></span>
-            </div>
-         </div>);
+        return renderSelect({ item, selectItem: this.selectItem });
       default:
         return null;
     }
@@ -155,6 +100,7 @@ EditorGUI.defaultProps = {
 EditorGUI.propTypes = {
   components: arrayOf(object),
   updateComponent: func.isRequired,
+  selectComponent: func.isRequired,
   className: string,
   items: number,
   rowHeight: number,

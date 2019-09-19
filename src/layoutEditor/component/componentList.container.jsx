@@ -10,7 +10,18 @@ import getComponent from './components';
 class ComponentListContainer extends Component {
     handleAddComponent = (componentType) => {
         const component = getComponent(componentType);
-        const comp = { component : component, id: component.i, type: componentType};
+        const comp = { 
+            component : component,
+            id: component.i,
+            type: componentType,
+            selected: false, 
+            componente: { 
+                color: "default",
+                text: "default",
+                cssClass: "",
+                id: component.i
+            }
+        };
         this.props.addComponent(comp);
     };
     render(){
