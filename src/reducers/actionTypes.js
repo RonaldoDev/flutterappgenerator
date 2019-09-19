@@ -1,7 +1,0 @@
-
-
-export const ADD_COMPONENT = "ADD_COMPONENT"
-
-export const UPDATE_COMPONENTS = "UPDATE_COMPONENTS"
-
-export const ADD_VIEW = "ADD_VIEW"
