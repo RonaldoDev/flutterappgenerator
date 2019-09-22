@@ -18,28 +18,41 @@ class EditorGUI extends Component {
       selected: false,
       text: "default",
       cssClass: " selected",
-      color: "primary"
+      color: "primary",
+      isLoading: false,
+      todos: {}
     }
-    this.onLayoutChange = this.onLayoutChange.bind(this)
+    this.onLayoutChange = this.onLayoutChange.bind(this);
+    this.fetchTodos = this.fetchTodos.bind(this)
 }
-  onLayoutChange = (layout) => {
+   onLayoutChange = (layout) => {
     const { components, updateComponent } = this.props
     const componentPositions = components.reduce((layouts, component) => {
       layout.forEach(item => {
         if (component.id === item.i) {
-          layouts.push({...component, component: item});
+          layouts.push({...component, layoutItem: item});
         }
       })
       return layouts;
     }, []);
+    this.send(componentPositions)
     updateComponent(componentPositions)
   };
+  async send(componentPositions) {
+    await fetch('v1/generate', {
+      method: 'post',
+      headers: new Headers({
+        'Content-Type': 'application/json'
+        }),
+      body: JSON.stringify(componentPositions)});
+    
+  }
   selectItem = (id) => {
     const { components, selectComponent } = this.props;
     components.forEach(comp => {
       if (comp.id === id) {
         comp.selected = true;
-        selectComponent(comp.componente);
+        selectComponent(comp.widget);
       }
       else
         comp.selected = false;
@@ -47,12 +60,13 @@ class EditorGUI extends Component {
      this.setState({ isSelected: true })
   }
   renderItems(item) {
+    
     switch(item.type) {
       case 'button':
         return renderButton({ item, selectItem: this.selectItem });
-      case 'text':
+      case 'textField':
         return renderTextField({ item, selectItem: this.selectItem });
-      case 'check':
+      case 'checkBox':
         return renderCheckbox({ item, selectItem: this.selectItem });
       case 'appbar':
         return renderAppBar({ item, selectItem: this.selectItem });
@@ -62,9 +76,16 @@ class EditorGUI extends Component {
         return null;
     }
   };
+ async fetchTodos () {
+    this.setState({ isLoading: true })
+
+    const resp = await fetch('v1/generate');
+    console.log(resp.json())
+  }
     render() {
+        
         const { components } = this.props;
-        const layout = components.map(item => item.component);
+        const layout = components.map(item => item.layoutItem);
           return (
             <Container maxWidth="lg">
             <div className="phone">

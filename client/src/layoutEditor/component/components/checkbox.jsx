@@ -4,11 +4,12 @@ import { Checkbox, FormControlLabel } from '@material-ui/core';
 
 export default function RenderCheckbox(props) {
   const { item, selectItem } = props
-  const { componente, id, selected } = item;
-  const { color, text } = componente;
+  const { widget, id, selected } = item;
+  const { color, text } = widget;
   return (
-    <div key={item.id}>
+    <div key={item.id} >
       <FormControlLabel
+      style={{ width: '100%', left: 0}}
         id="form-label"
         onClick={() => selectItem(id)}
         className={selected ? " selected" : ""}

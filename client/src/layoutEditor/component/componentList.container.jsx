@@ -11,11 +11,11 @@ class ComponentListContainer extends Component {
     handleAddComponent = (componentType) => {
         const component = getComponent(componentType);
         const comp = { 
-            component : component,
+            layoutItem : component,
             id: component.i,
             type: componentType,
             selected: false, 
-            componente: { 
+            widget: { 
                 color: "default",
                 text: "default",
                 cssClass: "",

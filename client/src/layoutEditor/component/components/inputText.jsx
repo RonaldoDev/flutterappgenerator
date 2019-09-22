@@ -4,8 +4,8 @@ import { TextField } from '@material-ui/core';
 
 export default function RenderTextField(props) {
   const { item, selectItem } = props
-  const { componente, id, selected } = item;
-  const { color, text } = componente;
+  const { widget, id, selected } = item;
+  const { color, text } = widget;
   return (
     <div key={item.id} onClick={() => selectItem(id)} className={selected ? " selected" : ""}>
       <TextField
