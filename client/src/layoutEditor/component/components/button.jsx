@@ -4,8 +4,8 @@ import { Button } from '@material-ui/core';
 
 export default function RenderButton(props) {
   const { item, selectItem } = props
-  const { componente, id, selected } = item;
-  const { color, text } = componente;
+  const { widget, id, selected } = item;
+  const { color, text } = widget;
         return (
           <div key={id} className={selected ? " selected" : ""} onClick={() => selectItem(id)}>
             <Button color={color} style={{width:'100%'}} variant="contained">

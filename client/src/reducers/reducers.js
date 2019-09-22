@@ -3,7 +3,7 @@ import { ADD_COMPONENT, UPDATE_COMPONENTS, SELECT_COMPONENT, EDIT_COMPONENT, SEL
 const initialState = {
   allIds: [],
   byIds: {},
-  components: ['text', 'button', 'check', 'appbar', 'select'],
+  components: ['textField', 'button', 'checkBox', 'appbar', 'select'],
   componentsRender: [],
   views: [{ id: 0, title: "view0", components: [], selectedComponent: {}}],
   currentTab: { id: 0, title: "view0", components: [], selectedComponent: {}}

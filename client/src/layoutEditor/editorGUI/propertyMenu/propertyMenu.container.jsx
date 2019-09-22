@@ -18,8 +18,8 @@ class PropertyMenuContainer extends Component {
     const { components, updateComponent, component } = this.props
     const componentPositions = components.reduce((som, comp) => {
       if(comp.id === component.id) {
-        comp.componente.text = values.text;
-        comp.componente.color = values.color;
+        comp.widget.text = values.text;
+        comp.widget.color = values.color;
       }
       som.push(comp);
       return som;
