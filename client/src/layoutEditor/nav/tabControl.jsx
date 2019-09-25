@@ -6,7 +6,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import TabPanel from './tabPanel'
 import EditableContainer from '../editorGUI/editorGUI.container';
-
+import i18n from 'i18next';
 
 class TabControl extends Component {
     constructor(props) {
@@ -45,13 +45,14 @@ class TabControl extends Component {
             <div style={{ flexGrow: 1}}>
                 <AppBar position="static" style={{ flexGrow: 1}}>
                 <Toolbar>
-                <Button color="inherit" onClick={() => addView()}>Add</Button>
+                <Button color="inherit" onClick={() => addView()}>{i18n.t("add")}</Button>
                     <Tabs value={currentTab.id} onChange={this.handleChange} aria-label="simple tabs example">
                         {views.map(view => this.renderTabItems(view.id, view.title))}
                     </Tabs>
                 </Toolbar>
                 </AppBar>
-                {views.map(view => this.renderItems(view.id))}
+                {/* {views.map(view => this.renderItems(view.id))} */}
+                {this.renderItems(views[0].id)}
             </div>
         );
     }

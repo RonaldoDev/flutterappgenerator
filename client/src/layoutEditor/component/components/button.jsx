@@ -8,7 +8,7 @@ export default function RenderButton(props) {
   const { color, text } = widget;
         return (
           <div key={id} className={selected ? " selected" : ""} onClick={() => selectItem(id)}>
-            <Button color={color} style={{width:'100%'}} variant="contained">
+            <Button style={{width:'100%', backgroundColor: color}} variant="contained">
               {text}
             </Button>
           </div>);

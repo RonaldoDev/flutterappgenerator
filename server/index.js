@@ -29,7 +29,7 @@ app.use(BodyParser({
 app.use(respond())
 
 // API routes
-require('./routes')(router)
+require('./src/routes')(router)
 app.use(router.routes())
 app.use(router.allowedMethods())
 app.use(require('koa-static')('./build'))

@@ -1,8 +1,14 @@
 import React from 'react';
 import './App.css';
 import LayoutGeneratorContainer from './layoutEditor/layoutGenerator.container';
+import i18n from "i18next";
+import resources from './i18n';
+
 
 function App() {
+  let userLang = navigator.language || navigator.userLanguage; 
+  init18n(userLang);
+  console.log(userLang);
   return (
     <div className="App">
       <meta
@@ -14,6 +20,12 @@ function App() {
       </header>
     </div>
   );
+}
+function init18n(userLang) {
+  i18n.init({
+    resources,
+    lng: userLang
+  });
 }
 
 export default App;

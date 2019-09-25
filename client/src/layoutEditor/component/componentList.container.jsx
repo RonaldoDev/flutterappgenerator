@@ -19,7 +19,9 @@ class ComponentListContainer extends Component {
                 color: "default",
                 text: "default",
                 cssClass: "",
-                id: component.i
+                id: component.i,
+                hasAction: componentType === "button",
+                action: { type: "", value: "" }
             }
         };
         this.props.addComponent(comp);
