@@ -39,12 +39,7 @@ class EditorGUI extends Component {
     updateComponent(componentPositions)
   };
   async send(componentPositions) {
-    await fetch('v1/generate', {
-      method: 'post',
-      headers: new Headers({
-        'Content-Type': 'application/json'
-        }),
-      body: JSON.stringify(componentPositions)});
+   
     
   }
   selectItem = (id) => {

@@ -1,40 +1,47 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-// import { getComponentList } from '../../reducers/selectors';
-import { addView } from './nav.actions';    
+import { getViews } from './nav.selectors';
+import { arrayOf, object } from 'prop-types';
+// import { save } from './nav.actions';    
 import ActionMenu from './actionMenu';
 
-// import { arrayOf, func, string } from 'prop-types';
-// import getComponent from './components';
 
 class ActionMenuContainer extends Component {
-    handleAddComponent = (componentType) => {
-        // const component = getComponent(componentType);
-        // const comp = { component : component, id: component.i, type: componentType};
-        // this.props.addComponent(comp);
+    constructor(){
+        super();
+        this.handleGenerateSource = this.handleGenerateSource.bind(this);
+    }
+    handleGenerateSource = () => {
+        debugger;
+        const { views } = this.props;
+        fetch('v1/generate', {
+            method: 'post',
+            headers: new Headers({
+              'Content-Type': 'application/json'
+              }),
+            body: JSON.stringify(views)});
     };
     render(){
-        // const { componentList } = this.props;
         return (<div>
-            <ActionMenu />
+            <ActionMenu generateCode={this.handleGenerateSource} />
             
             </div>)
 
     }
 }
 
-// ActionMenuContainer.propTypes = {
-//     componentList: arrayOf(string),
-//     addComponent: func
-// }
+ActionMenuContainer.propTypes = {
+    views: arrayOf(object),
+    // save: func
+}
 
-// const mapStateToPros = state => {
-//     const componentList = getComponentList(state);
-//     return { componentList };
-// }
+const mapStateToPros = state => {
+    const views = getViews(state);
+    return { views };
+}
 
-const mapDispatchToProps = dispatch => 
-    bindActionCreators({ addView }, dispatch);
+// const mapDispatchToProps = dispatch => 
+//     bindActionCreators({ save }, dispatch);
 
-export default connect(null, null)(ActionMenuContainer);
+export default connect(mapStateToPros, null)(ActionMenuContainer);

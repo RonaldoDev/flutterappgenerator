@@ -1,83 +1,119 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
+import { CirclePicker } from 'react-color';
 import { reduxForm, Field } from 'redux-form'
 // import MenuItem from 'material-ui/MenuItem'
 // import { RadioButton } from 'material-ui/RadioButton'
 import {
+  Grid,
   MenuItem,
   Select,
+  Box,
   TextField,
+  Container,
+  ExpansionPanel,
+  ExpansionPanelDetails,
+  ExpansionPanelSummary,
+  Typography,
+  Icon,
+  List,
+  ListItem,
+  ListItemText
 
 } from '@material-ui/core'
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+// import { ExpandMoreIcon } from '@material-ui/icons';
 
-class PropertyMenuForm extends Component {
-  onChangeSubmit = (onChange, handleSubmit) => {
-    let timerIdle;
-    return e => {
-        onChange(e);
-  
-        clearTimeout(timerIdle);
-        timerIdle = setTimeout(() => {
-           handleSubmit();
-       }, 800);
-     }
-  };
-  renderSelect = ({
-    input,
-    label,
-    meta: { touched, error },
-    ...custom
-  }) => (
-    <Select
-      style={{width:'100%'}}
-      {...input}
-      {...custom}
-    >
-      <MenuItem value='default'>Default</MenuItem>
-      <MenuItem value="primary">Primary</MenuItem>
-      <MenuItem value="secondary">Secondary</MenuItem>
-    </Select>
-  )
-  renderTextField = ({
-    input,
-    label,
-    meta: { touched, error },
-    ...custom
-  }) => (
-    <TextField
-    
-    {...input}
-    {...custom}
-    />
-  )
-  render() {
-    const { handleSubmit, pristine, reset, submitting, deleteItem } = this.props;
+class PropertyMenu extends Component {
+  constructor() {
+    super();
+    this.send = this.send.bind(this);
+    this.handleChangeColor = this.handleChangeColor.bind(this);
+    this.handleAddAction = this.handleAddAction.bind(this);
+    this.renderActions = this.renderActions.bind(this);
+  }
+  send(obj) {
+    this.props.handleUpdateComponents(obj);
+  }
+  onSetName = (value) => {
+    console.log(value)
+    this.send({ text: value });
+  }
+  handleChangeColor(color, event) {
+    console.log("color")
+    this.send({ color: color.hex });
+  }
+  handleAddAction(event) {
+    this.send({ action: { type: 'navigate', value: event.target.textContent }});
+  }
+  renderListItems(item, index) {
     return (
-      <form onSubmit={handleSubmit}>
-        <Field name="text"
-          // onChange={(e) => this.onChangeSubmit(e, handleSubmit)}
-          // handleSubmit={handleSubmit}
-          component={this.renderTextField}
-          label="name" />
-        <Field name="color"
-          component={this.renderSelect}
-          label="name" />
-        <div>
-        <button type="submit" disabled={pristine || submitting}>Submit</button>
-        <button type="button" disabled={pristine || submitting} onClick={reset}>
-          Clear Values
-        </button>
-        <button type="button"onClick={deleteItem}>
-          Delte
-        </button>
+      <ListItem key={`${item}${index}`} button onClick={this.handleAddAction}>
+        <ListItemText primary={item}/>
+      </ListItem>
+    );
+  }
+  renderActions() {
+    const { views } = this.props;
+    return(<ExpansionPanel>
+          <ExpansionPanelSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+          >
+            <Typography>Actions</Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+          <List component="nav">
+            {views.map((view, index) => this.renderListItems(view, index))}
+          </List>
+            
+          </ExpansionPanelDetails>
+        </ExpansionPanel>);
+  }
+
+  render() {
+    const { component } = this.props;
+    const { text } = component;
+    const isButton = component.hasAction
+    console.log(component);
+    return (
+      <div style={{ width: "100%" }}>
+        <ExpansionPanel>
+          <ExpansionPanelSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+          >
+            <Typography>Name</Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+            <TextField label="Nome" value={text} onChange={evt => this.onSetName(evt.target.value)} />
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
+
+
+        <ExpansionPanel>
+          <ExpansionPanelSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+          >
+            <Typography>Color</Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+            <CirclePicker onChangeComplete={this.handleChangeColor} />
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
+        {isButton && this.renderActions()}
       </div>
-      </form>
+
     )
   }
 }
 
 // Decorate with redux-form
-PropertyMenuForm = reduxForm({
-  form: 'PropertyMenu',
-})(PropertyMenuForm)
+// PropertyMenuForm = reduxForm({
+//   form: 'PropertyMenu',
+// })(PropertyMenuForm)
 
-export default PropertyMenuForm
+export default PropertyMenu

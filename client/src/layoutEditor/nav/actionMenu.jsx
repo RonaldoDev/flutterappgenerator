@@ -6,12 +6,14 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import i18n from 'i18next';
 
 
 
 class ActionMenu extends Component {
   
   render() {
+    const { generateCode } = this.props;
     const classes = makeStyles(theme => ({
       root: {
         flexGrow: 1,
@@ -31,10 +33,10 @@ class ActionMenu extends Component {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" className={classes.title}>
-              Flutter App Generator
+              {i18n.t("app-title")}
             </Typography>
-            <Button color="inherit">Save</Button>
-            <Button color="inherit">Add</Button>
+            <Button color="inherit" onClick={generateCode}>{i18n.t("save")}</Button>
+            <Button color="inherit">{i18n.t("generate")}</Button>
           </Toolbar>
         </AppBar>
       </div>
