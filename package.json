@@ -17,10 +17,10 @@
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
     "lodash": "^4.17.15",
-    "mocha": "^6.2.0"
+    "nodemon": "^1.18.9"
   },
   "devDependencies": {
-    "nodemon": "^1.18.9"
+    "jest": "^24.9.0"
   },
   "engines": {
     "yarn": "1.17.3"
@@ -30,6 +30,6 @@
     "debug": "nodemon --nolazy --inspect-brk=9229 index",
     "start": "cross-env NODE_ENVIRONMENT=production nodemon index",
     "heroku-postbuild": "cd client && yarn && yarn run build",
-    "test": "mocha"
+    "test": "jest"
   }
 }

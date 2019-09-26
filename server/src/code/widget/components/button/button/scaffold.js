@@ -1,12 +1,11 @@
 const { getAction } = require('./behaviors');
 
 const button = (properties) => {
-    const { color, text, hasActions, action } = properties;
+    const { color, text, action } = properties;
     const colorString = color === 'default'? 'Colors.blue' : `Color(0xff${color.replace('#', '')})`
     const actionPressed = getAction(action);
 
-    return `
-        FlatButton(
+    return `FlatButton(
             color: ${colorString},
             textColor: Colors.white,
             disabledColor: Colors.grey,
