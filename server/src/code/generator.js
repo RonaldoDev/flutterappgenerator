@@ -1,5 +1,4 @@
 
-
 function makeCodeConversion(content, widgets, title) {
     let fileContent = content.replace('$components', widgets);
         const indexImport = fileContent.indexOf('view');
