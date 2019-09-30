@@ -6,7 +6,7 @@ const resources = {
       "generate": "Generate Code",
       "save": "Save",
       "app-title": "Flutter App Generator",
-      "add": "Add"
+      "add": "Add Interface"
     }
   },
   ["pt-BR"]: {
@@ -14,7 +14,7 @@ const resources = {
       "generate": "Gerar Código",
       "save": "Gravar",
       "app-title": "Gerador de aplicativos Flutter",
-      "add": "Adicionar"
+      "add": "Adicionar Interface"
     }
   }
 };

@@ -1,11 +1,23 @@
 import React, { Component } from 'react';
-import { Container } from '@material-ui/core';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
 import { func, arrayOf, string } from 'prop-types';
+import {
+  Grid,
+  MenuItem,
+  Select,
+  Box,
+  TextField,
+  Container,
+  ExpansionPanel,
+  ExpansionPanelDetails,
+  ExpansionPanelSummary,
+  Typography,
+  Icon,
+  List,
+  ListItem,
+  ListItemText
 
-
+} from '@material-ui/core'
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 class ComponentList extends Component {
     constructor(){
@@ -16,12 +28,48 @@ class ComponentList extends Component {
       const { addComponent } = this.props
       addComponent(event.target.textContent);
     }
+    renderButton() {
+      return <ExpansionPanel style={{ width: "100%" }}>
+        <ExpansionPanelSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography>Buttons</Typography>
+        </ExpansionPanelSummary>
+        <ExpansionPanelDetails style={{ width: "100%" }}>
+        <List component="nav">
+          <ListItem style={{ width: "100%" }} key="01" button onClick={this.handleAddComponent}>
+              <ListItemText primary={"Button"}/>
+            </ListItem>
+            <ListItem style={{ width: "100%" }} key="02" button onClick={this.handleAddComponent}>
+              <ListItemText primary={"Float Button"}/>
+            </ListItem>
+            <ListItem style={{ width: "100%"} } key="03" button onClick={this.handleAddComponent}>
+              <ListItemText primary={"Icon Button"}/>
+            </ListItem>
+            <ListItem style={{ width: "100%" }} key="04" button onClick={this.handleAddComponent}>
+              <ListItemText primary={"Icon Label Button"}/>
+            </ListItem>
+          </List>
+        </ExpansionPanelDetails>
+      </ExpansionPanel>
+    }
     renderListItems(item, index) {
-      return (
-        <ListItem key={`${item}${index}`} button onClick={this.handleAddComponent}>
-          <ListItemText primary={item}/>
-        </ListItem>
-      );
+      switch (item) {
+        case "button":
+          return this.renderButton();
+         
+      
+        default:
+          return (
+        
+            <ListItem key={`${item}${index}`} button onClick={this.handleAddComponent}>
+              <ListItemText primary={item}/>
+            </ListItem>
+          );
+      }
+     
     }
     render() {
       const { components } = this.props;

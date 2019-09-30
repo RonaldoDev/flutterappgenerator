@@ -18,12 +18,12 @@ class LayoutGenerator extends Component {
 
         return (
         <Grid container style={{flexGrow: 1}} spacing={0}>
-            <Grid item lg={12}> <ActionMenuContainer /></Grid>
-            <Grid item xs={3}>
+            <Grid item xs={3}> <div><ActionMenuContainer /><ComponentListContainer /></div></Grid>
+            {/* <Grid item xs={3}>
                 <Grid container justify="center" spacing={0}>
                 <ComponentListContainer />
                 </Grid>
-            </Grid>
+            </Grid> */}
             <Grid item xs={9}> <TabControlContianer /></Grid>
             </Grid>)
     }

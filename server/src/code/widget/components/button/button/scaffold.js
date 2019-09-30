@@ -4,7 +4,6 @@ const button = (properties) => {
     const { color, text, action } = properties;
     const colorString = color === 'default'? 'Colors.blue' : `Color(0xff${color.replace('#', '')})`
     const actionPressed = getAction(action);
-
     return `FlatButton(
             color: ${colorString},
             textColor: Colors.white,
@@ -22,6 +21,13 @@ const button = (properties) => {
         )`;
 };
 
+// const Button = {
+//     template: getTemplate(),
+//     minChildren: 0,
+//     maxChildren: 1,
+//     children: ['Text', 'Decorator', 'Icon']
+
+// }
 module.exports = {
     button
 }

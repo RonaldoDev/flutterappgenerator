@@ -4,7 +4,7 @@ const { flexible } = require('./layout/flexible/scaffold');
 const { getInput } = require('./input');
 
 
-function getComponent(component) {
+function insertNode(component) {
     switch (component.type) {
         case 'button':
             return flexible(getButton(component));
@@ -16,5 +16,5 @@ function getComponent(component) {
 }
 
 module.exports = {
-    getComponent
+    insertNode
 }

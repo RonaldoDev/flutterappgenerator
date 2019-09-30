@@ -9,7 +9,8 @@ export default function RenderTextField(props) {
   return (
     <div key={item.id} onClick={() => selectItem(id)} className={selected ? " selected" : ""}>
       <TextField
-        style={{ width: '100%' }}
+        className="protect"
+        fullWidth
         id={item.id}
         label={text}
       />
