@@ -11,26 +11,19 @@ import {
   Box,
 
 } from '@material-ui/core'
+import ViewPropertyMenuContainer from './viewPropertyMenu.container';
 
-class PropertyMenuContainer extends Component {
+class PropertyMenuContainer extends Component {  
   handleUpdateComponents = (value) => {
-    // console.log(values)
-    // this.props.updateComponent(values);
-    debugger;
+    // debugger;
     const { components, updateComponent, component } = this.props
     const componentPositions = components.reduce((som, comp) => {
       if(comp.id === component.id) {
-        if ('text' in value)
-          comp.widget.text = value.text;
-        if ('color' in value)
-          comp.widget.color = value.color;
-        if ('action' in value)
-          comp.widget.action = value.action;
+        comp.widget[Object.keys(value)[0]] = Object.values(value)[0];
       }
       som.push(comp);
       return som;
     }, []);
-    debugger;
     updateComponent(componentPositions)
   }
   deleteItem = () => {
@@ -49,8 +42,9 @@ class PropertyMenuContainer extends Component {
   render() {
     const { component, views, currentTab } = this.props;
     const initial = { text: component.text, color: component.color  }
-    const viewsFiltered = views.filter(view => view.title != currentTab.title)
-    if (component.color)
+    const viewsFiltered = views.filter(view => view.id != currentTab.id)
+    debugger;
+    if (component.id)
       return (
         <Box className="prop-menu">
           <PropertyMenu 
@@ -60,7 +54,15 @@ class PropertyMenuContainer extends Component {
             views={viewsFiltered.map(v => v.title)}
           />
         </Box>);
-    return null;
+    return (
+      <Box className="prop-menu">
+        <ViewPropertyMenuContainer 
+          // handleUpdateComponents={this.handleUpdateComponents}
+          // deleteItem={this.deleteItem}
+          // component={component}
+          view={views.filter(v => v.id == currentTab.id)[0]}
+        />
+      </Box>);
   }
 }
 

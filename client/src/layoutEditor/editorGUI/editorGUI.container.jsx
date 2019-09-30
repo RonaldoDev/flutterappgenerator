@@ -28,18 +28,14 @@ class EditorGUIContainer extends Component {
     const { componentList } = this.props;
     return (
       <Grid container spacing={0}>
-
         <Grid item md={6}>
-          <div style={{ border: "2px solid pink" }}>
             <EditorGUI
               components={componentList}
               updateComponent={this.handleUpdateComponents}
               selectComponent={this.handleSelectComponent} />
-          </div>
         </Grid>
         <Grid item xs={6}>
-          <div style={{ border: "2px solid green" }}><PropertyMenuContainer /></div>
-
+          <PropertyMenuContainer />
         </Grid>
       </Grid>);
   }

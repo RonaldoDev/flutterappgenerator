@@ -67,30 +67,6 @@ custom-box {
     background-position: bottom right;
     padding: 0 3px 3px 0;
   }
-  .delete-tooltip {
-    position: absolute;
-    right: 0px;
-    width: 20px;
-    height: 18px;
-    background-repeat: no-repeat;
-    background-origin: content-box;
-    box-sizing: border-box;
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAQAAAD8x0bcAAAAhUlEQVR4AZXSwQ2CQBBA0deB3IA79EENShmakEBFaKL2BW0wciQEMPx33cNmZpwvUbnPKonNMm+x8JVZVRrEyqAEgNwoNoxyAF5ixxPgYhI7JhfgKg7cgFaYaVQLjTDTAt3how6oxYH6xMfpxY7e/2FKAaDYXEthVeqzWnC6fyqPWSVxth82jKQcbHhm2gAAAABJRU5ErkJggg==');
-    background-position: right top;
-    cursor: pointer;
-  }
-  .settings-tooltip {
-    position: absolute;
-    right: 19px;
-    width: 20px;
-    height: 18px;
-    background-repeat: no-repeat;
-    background-origin: content-box;
-    box-sizing: border-box;
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAQAAAD8x0bcAAAAoUlEQVR4AZ2StRUCQRQAh0dBhKSkeAG4W1tYGUiCS4ZTBCFu536z0X433OAjQAAfphx58uSICV5uX6MbXnRoMyDLiuf/rSgwoIsMP0+D50dkIgoHJEkyFP9jREJcvqLl/+9h+f1fCCGj9hXWVP8KaI2qqn8DGfF/ujWef7q1lE5b+JAMaQbif+JwBNChT042zCV5hrTM12LK+Wu0dX8q5rwAmdxvTD/+AsMAAAAASUVORK5CYII=');
-    background-position: right top;
-    cursor: pointer;
-  }
   .react-resizable-handle-sw {
     bottom: 0;
     left: 0;
@@ -173,7 +149,6 @@ custom-box {
   .box3:hover .react-resizable-handle {
     display: block;
   }
-
   .phone {
     margin: 30px;
     border-radius: 25px;
@@ -192,9 +167,12 @@ custom-box {
   }
 
   .selected {
-    border: 2px solid green;
+    border: 2px solid black;
+    border-style: dashed;
   }
-
+  .protect {
+    pointer-events: none;
+  }
   .prop-menu {
     background-color: white;
     height: "100%";

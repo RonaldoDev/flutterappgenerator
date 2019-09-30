@@ -5,7 +5,7 @@ import { getComponentList } from '../../reducers/selectors';
 import { addComponent } from './components.actions';    
 import ComponentList from './componentList';
 import { arrayOf, func, string } from 'prop-types';
-import getComponent from './components';
+import getComponent, { widget } from './components';
 
 class ComponentListContainer extends Component {
     handleAddComponent = (componentType) => {
@@ -15,14 +15,7 @@ class ComponentListContainer extends Component {
             id: component.i,
             type: componentType,
             selected: false, 
-            widget: { 
-                color: "default",
-                text: "default",
-                cssClass: "",
-                id: component.i,
-                hasAction: componentType === "button",
-                action: { type: "", value: "" }
-            }
+            widget: widget(component.i, componentType)
         };
         this.props.addComponent(comp);
     };

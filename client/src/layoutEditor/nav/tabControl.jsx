@@ -46,7 +46,12 @@ class TabControl extends Component {
                 <AppBar position="static" style={{ flexGrow: 1}}>
                 <Toolbar>
                 <Button color="inherit" onClick={() => addView()}>{i18n.t("add")}</Button>
-                    <Tabs value={currentTab.id} onChange={this.handleChange} aria-label="simple tabs example">
+                    <Tabs 
+                        value={currentTab.id} 
+                        onChange={this.handleChange} 
+                        aria-label="simple tabs example"
+                        variant="scrollable"
+                        scrollButtons="auto">
                         {views.map(view => this.renderTabItems(view.id, view.title))}
                     </Tabs>
                 </Toolbar>

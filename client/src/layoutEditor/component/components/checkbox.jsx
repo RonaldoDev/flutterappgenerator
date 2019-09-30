@@ -9,16 +9,18 @@ export default function RenderCheckbox(props) {
   return (
     <div key={item.id} >
       <FormControlLabel
+      className={selected ? " selected" : ""} 
       style={{ width: '100%', left: 0}}
         id="form-label"
         onClick={() => selectItem(id)}
-        className={selected ? " selected" : ""}
+        
         control={
           <Checkbox
+            className="protect"
             value="checkedA"
             color={color}
             inputProps={{
-              'aria-label': 'primary checkbox',
+              'aria-label': 'primary checkbox'
             }}
           />
         }

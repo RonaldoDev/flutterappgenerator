@@ -35,15 +35,12 @@ class EditorGUI extends Component {
       })
       return layouts;
     }, []);
-    this.send(componentPositions)
     updateComponent(componentPositions)
   };
-  async send(componentPositions) {
-   
-    
-  }
+
   selectItem = (id) => {
     const { components, selectComponent } = this.props;
+    debugger;
     components.forEach(comp => {
       if (comp.id === id) {
         comp.selected = true;

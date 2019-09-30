@@ -16,3 +16,15 @@ export default (item) => {
             return null;
     }
 }
+
+export const widget = (id, componentType) => ({
+    color: "default",
+    text: "default",
+    textColor: "black",
+    fontSize: 12,
+    cssClass: "",
+    id: id,
+    hasAction: componentType === "button",
+    action: { type: "", value: "" }
+    
+});

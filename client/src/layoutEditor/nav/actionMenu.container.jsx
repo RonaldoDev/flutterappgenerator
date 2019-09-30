@@ -13,7 +13,6 @@ class ActionMenuContainer extends Component {
         this.handleGenerateSource = this.handleGenerateSource.bind(this);
     }
     handleGenerateSource = () => {
-        debugger;
         const { views } = this.props;
         fetch('v1/generate', {
             method: 'post',

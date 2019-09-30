@@ -1,119 +1,98 @@
-import React, { Component, useState } from 'react';
-import { CirclePicker } from 'react-color';
-import { reduxForm, Field } from 'redux-form'
-// import MenuItem from 'material-ui/MenuItem'
-// import { RadioButton } from 'material-ui/RadioButton'
-import {
-  Grid,
-  MenuItem,
-  Select,
-  Box,
-  TextField,
-  Container,
-  ExpansionPanel,
-  ExpansionPanelDetails,
-  ExpansionPanelSummary,
+import React from 'react';
+import PropTypes from 'prop-types';
+import { makeStyles } from '@material-ui/core/styles';
+import { 
+  AppBar,
+  Tabs,
+  Tab,
   Typography,
-  Icon,
-  List,
-  ListItem,
-  ListItemText
-
-} from '@material-ui/core'
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-// import { ExpandMoreIcon } from '@material-ui/icons';
-
-class PropertyMenu extends Component {
-  constructor() {
-    super();
-    this.send = this.send.bind(this);
-    this.handleChangeColor = this.handleChangeColor.bind(this);
-    this.handleAddAction = this.handleAddAction.bind(this);
-    this.renderActions = this.renderActions.bind(this);
-  }
-  send(obj) {
-    this.props.handleUpdateComponents(obj);
-  }
-  onSetName = (value) => {
-    console.log(value)
-    this.send({ text: value });
-  }
-  handleChangeColor(color, event) {
-    console.log("color")
-    this.send({ color: color.hex });
-  }
-  handleAddAction(event) {
-    this.send({ action: { type: 'navigate', value: event.target.textContent }});
-  }
-  renderListItems(item, index) {
-    return (
-      <ListItem key={`${item}${index}`} button onClick={this.handleAddAction}>
-        <ListItemText primary={item}/>
-      </ListItem>
-    );
-  }
-  renderActions() {
-    const { views } = this.props;
-    return(<ExpansionPanel>
-          <ExpansionPanelSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            <Typography>Actions</Typography>
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
-          <List component="nav">
-            {views.map((view, index) => this.renderListItems(view, index))}
-          </List>
-            
-          </ExpansionPanelDetails>
-        </ExpansionPanel>);
-  }
-
-  render() {
-    const { component } = this.props;
-    const { text } = component;
-    const isButton = component.hasAction
-    console.log(component);
-    return (
-      <div style={{ width: "100%" }}>
-        <ExpansionPanel>
-          <ExpansionPanelSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            <Typography>Name</Typography>
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
-            <TextField label="Nome" value={text} onChange={evt => this.onSetName(evt.target.value)} />
-          </ExpansionPanelDetails>
-        </ExpansionPanel>
+  Box,
+  Button
+} from '@material-ui/core';
+import TextMenu from './textMenu';
+import StyleMenu from './styleMenu';
+import ActionMenu from './actionMenu';
 
 
-        <ExpansionPanel>
-          <ExpansionPanelSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            <Typography>Color</Typography>
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
-            <CirclePicker onChangeComplete={this.handleChangeColor} />
-          </ExpansionPanelDetails>
-        </ExpansionPanel>
-        {isButton && this.renderActions()}
-      </div>
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
 
-    )
-  }
+  return (
+    <Typography
+      component="div"
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      <Box p={3}>{children}</Box>
+    </Typography>
+  );
 }
 
-// Decorate with redux-form
-// PropertyMenuForm = reduxForm({
-//   form: 'PropertyMenu',
-// })(PropertyMenuForm)
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.any.isRequired,
+  value: PropTypes.any.isRequired,
+};
 
-export default PropertyMenu
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.paper,
+  },
+}));
+
+export default function SimpleTabs(props) {
+  const classes = useStyles();
+  const [value, setValue] = React.useState(0);
+  const { handleUpdateComponents, deleteItem, component, views } = props;
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+  const renderButton = (deleteItem) => {
+    return ( <Button style={{ marginTop: 10 }}variant="contained" onClick={deleteItem}>Delete Item</Button>);
+  }
+  return (
+    <div className={classes.root}>
+      <AppBar position="static">
+        <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
+          <Tab label="Text" {...a11yProps(0)} />
+          <Tab label="Style" {...a11yProps(1)} />
+          <Tab label="Actions" {...a11yProps(2)} />
+        </Tabs>
+      </AppBar>
+      <TabPanel value={value} index={0}>
+        <TextMenu
+          handleUpdateComponents={handleUpdateComponents}
+          component={component}
+        />
+        {renderButton(deleteItem)}
+        
+      </TabPanel>
+      <TabPanel value={value} index={1}>
+        <StyleMenu
+          handleUpdateComponents={handleUpdateComponents}
+          component={component}
+        />
+        {renderButton(deleteItem)}
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        <ActionMenu
+          handleUpdateComponents={handleUpdateComponents}
+          component={component}
+          views={views}
+        />
+        {renderButton(deleteItem)}
+      </TabPanel>
+    </div>
+  );
+}

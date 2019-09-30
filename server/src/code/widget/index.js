@@ -1,6 +1,6 @@
-const { getComponent } = require('./components');
+const { insertNode } = require('./components');
 
-function buildWidgets(components) {
+function buildWidgetsTree(components) {
     let widgets = initializeRows();
     components.forEach((c) => {
         index = c.layoutItem.y;
@@ -8,12 +8,12 @@ function buildWidgets(components) {
         if (filteredComponents.length > 1) {
             let items = []
             filteredComponents.forEach(component => {
-                items.push(getComponent(component, widgets));
+                items.push(insertNode(component, widgets));
             })
             widgets[index] = row(items);
         }
         else
-            widgets[index] = row(getComponent(c, widgets))
+            widgets[index] = row(insertNode(c, widgets))
     });
     return widgets;
 }
@@ -29,5 +29,5 @@ const row = (component) => {
 }
 
 module.exports = {
-    buildWidgets
+    buildWidgetsTree
 }
