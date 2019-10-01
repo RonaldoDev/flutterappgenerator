@@ -21,7 +21,7 @@ class ViewPropertyMenuContainer extends Component {
           total.push(view);
           return total;
         }, []);
-        debugger;
+        
         this.props.saveViews(newViews);
       }
     render(){

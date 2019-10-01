@@ -15,7 +15,7 @@ import ViewPropertyMenuContainer from './viewPropertyMenu.container';
 
 class PropertyMenuContainer extends Component {  
   handleUpdateComponents = (value) => {
-    // debugger;
+    // 
     const { components, updateComponent, component } = this.props
     const componentPositions = components.reduce((som, comp) => {
       if(comp.id === component.id) {
@@ -43,7 +43,7 @@ class PropertyMenuContainer extends Component {
     const { component, views, currentTab } = this.props;
     const initial = { text: component.text, color: component.color  }
     const viewsFiltered = views.filter(view => view.id != currentTab.id)
-    debugger;
+    
     if (component.id)
       return (
         <Box className="prop-menu">

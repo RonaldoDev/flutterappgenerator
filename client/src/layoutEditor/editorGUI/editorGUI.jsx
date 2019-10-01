@@ -40,7 +40,7 @@ class EditorGUI extends Component {
 
   selectItem = (id) => {
     const { components, selectComponent } = this.props;
-    debugger;
+    
     components.forEach(comp => {
       if (comp.id === id) {
         comp.selected = true;

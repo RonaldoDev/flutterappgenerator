@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import withFirebaseAuth from 'react-with-firebase-auth'
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -8,7 +9,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import i18n from 'i18next';
 import TabControlContainer from './tabControl.container';
-
+import firebase from '../../firebase';
 
 class ActionMenu extends Component {
   constructor() {
@@ -18,6 +19,7 @@ class ActionMenu extends Component {
     }
     this.handleGenerate = this.handleGenerate.bind(this);
     this.handleToogleMenu = this.handleToogleMenu.bind(this);
+    
   }
   handleGenerate() {
     this.handleToogleMenu();
@@ -40,6 +42,11 @@ class ActionMenu extends Component {
         flexGrow: 1,
       },
     }));
+    const {
+      user,
+      signOut,
+      signInWithGoogle,
+    } = this.props;
     return (
       <div className={classes.root}>
         <AppBar position="static">
@@ -61,9 +68,10 @@ class ActionMenu extends Component {
               getContentAnchorEl={null}
               open={Boolean(anchorEl)}
               onClose={this.handleToogleMenu}
-            >
+              >
               <MenuItem onClick={this.handleGenerate}>{i18n.t("generate")}</MenuItem>
-              <MenuItem onClick={() => {}}>{i18n.t("save")}</MenuItem>
+              <MenuItem onClick={() => this.props.save(user)}>{i18n.t("save")}</MenuItem>
+              <MenuItem onClick={signOut}>{i18n.t("signout")}</MenuItem>
             </Menu>
             <Typography variant="h6" className={classes.title}>
               {i18n.t("app-title")}
@@ -74,5 +82,11 @@ class ActionMenu extends Component {
     );
   } 
 }
-
-export default ActionMenu;
+const firebaseAppAuth = firebase.auth();
+const providers = {
+  googleProvider: new firebase.auth.GoogleAuthProvider(),
+};
+export default withFirebaseAuth({
+  providers,
+  firebaseAppAuth,
+})(ActionMenu);
