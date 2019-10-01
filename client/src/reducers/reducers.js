@@ -1,4 +1,4 @@
-import { ADD_COMPONENT, UPDATE_COMPONENTS, SELECT_COMPONENT, EDIT_COMPONENT, SELECT_TAB, ADD_VIEW, SAVE_VIEWS } from "./actionTypes";
+import { ADD_COMPONENT, UPDATE_COMPONENTS, SELECT_COMPONENT, EDIT_COMPONENT, SELECT_TAB, ADD_VIEW, SAVE_VIEWS, FETCH_VIEWS } from "./actionTypes";
 
 const initialState = {
   allIds: [],
@@ -68,6 +68,14 @@ export default function(state = initialState, action) {
       return {
         ...state,
         views: [...content]
+      };
+    }
+    case FETCH_VIEWS: {
+      const content = action.payload;
+      return {
+        ...state,
+        views: content,
+        currentTab: { ...content[0]}
       };
     }
     default:

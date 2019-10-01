@@ -6,7 +6,7 @@ export default function RenderButton(props) {
   const { item, selectItem } = props
   const { widget, id, selected } = item;
   const { color, text, textColor, fontSize } = widget;
-  debugger;      
+        
   return (
           <div key={id} className={selected ? " selected" : ""} onClick={() => selectItem(id)}>
             <Button 

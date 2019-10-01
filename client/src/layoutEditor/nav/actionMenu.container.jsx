@@ -5,12 +5,14 @@ import { getViews } from './nav.selectors';
 import { arrayOf, object } from 'prop-types';
 // import { save } from './nav.actions';    
 import ActionMenu from './actionMenu';
+import firebase from '../../firebase';
 
 
 class ActionMenuContainer extends Component {
     constructor(){
         super();
         this.handleGenerateSource = this.handleGenerateSource.bind(this);
+        this.handleSave = this.handleSave.bind(this);   
     }
     handleGenerateSource = () => {
         const { views } = this.props;
@@ -21,9 +23,17 @@ class ActionMenuContainer extends Component {
               }),
             body: JSON.stringify(views)});
     };
+    handleSave = (user) => {
+        debugger;
+        const { views } = this.props;
+        firebase.database().ref('template/' + user.uid).set({
+            username: user.email,
+            views: JSON.stringify(views)
+          });
+    }
     render(){
         return (<div>
-            <ActionMenu generateCode={this.handleGenerateSource} />
+            <ActionMenu generateCode={this.handleGenerateSource} save={this.handleSave} />
             
             </div>)
 
