@@ -8,7 +8,7 @@
         "type": "node",
         "request": "launch",
         "name": "Launch via NPM",
-        "runtimeExecutable": "yarn",
+        "runtimeExecutable": "cd server && yarn",
         "runtimeArgs": [
             "debug"
         ],

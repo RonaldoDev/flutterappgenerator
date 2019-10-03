@@ -5,7 +5,7 @@ import { getComponentList } from '../../reducers/selectors';
 import { addComponent } from './components.actions';    
 import ComponentList from './componentList';
 import { arrayOf, func, string } from 'prop-types';
-import getComponent, { widget } from './components';
+import getComponent, { widget } from './components/components';
 
 class ComponentListContainer extends Component {
     handleAddComponent = (componentType) => {

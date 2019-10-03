@@ -64,7 +64,7 @@ class ComponentList extends Component {
         default:
           return (
         
-            <ListItem key={`${item}${index}`} button onClick={this.handleAddComponent}>
+            <ListItem key={`${item}${index}`} button onClick={() => this.handleAddComponent(item)}>
               <ListItemText primary={item}/>
             </ListItem>
           );

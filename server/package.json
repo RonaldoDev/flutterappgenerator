@@ -8,6 +8,7 @@
     "@koa/cors": "^3.0.0",
     "cross-env": "^5.2.0",
     "dotenv": "^8.0.0",
+    "jest": "^24.9.0",
     "koa": "^2.6.2",
     "koa-bodyparser": "^4.2.1",
     "koa-helmet": "^4.0.0",
@@ -25,6 +26,7 @@
     "dev": "nodemon index",
     "debug": "nodemon --nolazy --inspect-brk=9229 index",
     "start": "cross-env NODE_ENVIRONMENT=production nodemon index",
-    "heroku-postbuild": "cd client && yarn && yarn run build"
+    "heroku-postbuild": "cd client && yarn && yarn run build",
+    "test": "cd node_modules/jest/bin && node jest"
   }
 }

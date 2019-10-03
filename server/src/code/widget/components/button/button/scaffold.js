@@ -1,6 +1,6 @@
 const { getAction } = require('./behaviors');
 
-const button = (properties) => {
+const getTemplate = (properties) => {
     const { color, text, action } = properties;
     const colorString = color === 'default'? 'Colors.blue' : `Color(0xff${color.replace('#', '')})`
     const actionPressed = getAction(action);
@@ -21,13 +21,13 @@ const button = (properties) => {
         )`;
 };
 
-// const Button = {
-//     template: getTemplate(),
-//     minChildren: 0,
-//     maxChildren: 1,
-//     children: ['Text', 'Decorator', 'Icon']
+const button = (properties) => ({
+    template: getTemplate(properties),
+    minChildren: 0,
+    maxChildren: 1,
+    children: ['Text', 'Decorator', 'Icon']
 
-// }
+})
 module.exports = {
     button
 }
