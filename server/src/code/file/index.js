@@ -1,8 +1,8 @@
 const fs = require('fs');
-
-const path = '/Users/ronaldostranger/workspace/';
-const templatePath = `${path}TCC/server/src/code/flutter_templates/`;
-const flutterPath = `${path}flutter_app/hello_world/lib/`
+const path = require('path');
+const app_path = path.dirname(require.main.filename || process.mainModule.filename);
+const templatePath = `${app_path}/src/code/flutter_templates/`;
+const flutterPath = `${app_path}/src/code/flutter_templates/`; // flutter_app/hello_world/lib/`
 
 function getTemplate(template) {
     switch(template){

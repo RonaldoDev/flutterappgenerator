@@ -24,12 +24,4 @@ export default function RenderButton(props) {
           </div>);
 } 
 
-RenderButton.propTypes = {
-  item: object,
-  selectItem: func.isRequired,
-}
-
-RenderButton.defaultProps = {
-  cssClass: ''
-}
 
