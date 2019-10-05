@@ -21,7 +21,15 @@ class ActionMenuContainer extends Component {
             headers: new Headers({
               'Content-Type': 'application/json'
               }),
-            body: JSON.stringify(views)});
+            body: JSON.stringify(views)}).then(response => {
+                response.blob().then(blob => {
+					const url = window.URL.createObjectURL(blob);
+					let a = document.createElement('a');
+					a.href = url;
+					a.download = 'app.apk';
+					a.click();
+                });
+            }).catch(err => console.log(err));
     };
     handleSave = (user) => {
         debugger;

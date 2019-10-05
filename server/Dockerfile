@@ -44,6 +44,9 @@ ENV PATH="${ANDROID_HOME}/tools/bin:${PATH}"
 RUN mkdir -p ~/.android
 RUN touch ~/.android/repositories.cfg
 
+RUN mkdir -p /srv/app/server
+COPY . /srv/app/server
+
 # Install Flutter SDK
 WORKDIR /opt/flutter
 ENV FLUTTER_FILE_NAME="flutter_linux_v1.9.1+hotfix.2-stable.tar.xz"
@@ -59,12 +62,10 @@ ENV PATH="/opt/flutter/bin/cache/dart-sdk/bin:${PATH}"
 RUN mkdir -p /srv/app/flutter_template
 WORKDIR /srv/app/flutter_template
 
-RUN flutter create hello_world
-WORKDIR /srv/app/flutter_template/hello_world
-RUN flutter build apk --release
+RUN flutter create template
+WORKDIR /srv/app/flutter_template/template
+# RUN flutter build apk --release
 
-RUN mkdir -p /srv/app/server
-COPY . /srv/app/server
 WORKDIR /srv/app/server
 
 RUN npm install
