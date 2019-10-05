@@ -17,7 +17,8 @@
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
     "lodash": "^4.17.15",
-    "nodemon": "^1.18.9"
+    "nodemon": "^1.18.9",
+    "shelljs": "^0.8.3"
   },
   "engines": {
     "yarn": "1.17.3"
