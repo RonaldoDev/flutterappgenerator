@@ -31,7 +31,7 @@ On root directory exec
 to build and run docker containers.
 
 ## Local build
-To add dependencies set in /server and /cliet
+To add dependencies set in /server and /client
 ### `yarn install` 
 
 ## Debugging Client
