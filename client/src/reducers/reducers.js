@@ -5,8 +5,9 @@ const initialState = {
   byIds: {},
   components: ['textField', 'button', 'checkBox', 'appbar', 'select'],
   componentsRender: [],
-  views: [{ id: 0, title: "view0", components: [], selectedComponent: {}}],
-  currentTab: { id: 0, title: "view0", components: [], selectedComponent: {}}
+  views: [{ id: 0, title: "view0",   componentId: 0, components: [], selectedComponent: {}}],
+  currentTab: { id: 0, title: "view0",   componentId: 0, components: [], selectedComponent: {}},
+
 };
 
 export default function(state = initialState, action) {
@@ -22,9 +23,9 @@ export default function(state = initialState, action) {
             content,
             completed: false
           }
-        },
+        },     
         componentsRender: [...state.componentsRender, content], 
-        currentTab: { ...state.currentTab, components: [...state.componentsRender, content]}
+        currentTab: { ...state.currentTab,  componentId : content.id, components: [...state.componentsRender, content]}
       };
     };
     case UPDATE_COMPONENTS: {

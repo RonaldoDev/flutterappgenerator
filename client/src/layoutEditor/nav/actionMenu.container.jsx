@@ -32,8 +32,8 @@ class ActionMenuContainer extends Component {
             }).catch(err => console.log(err));
     };
     handleSave = (user) => {
-        debugger;
         const { views } = this.props;
+        
         firebase.database().ref('template/' + user.uid).set({
             username: user.email,
             views: JSON.stringify(views)

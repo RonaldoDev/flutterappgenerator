@@ -3,7 +3,7 @@ const { button } = require('./button/scaffold');
 function getButton(component) {
     switch (component.type) {
         case 'button':
-            return button(component.widget);
+            return button(component.widget).template;
         case 'floatButton':
                 return null;
         case 'iconButton':

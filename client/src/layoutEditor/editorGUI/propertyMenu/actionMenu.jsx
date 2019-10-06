@@ -48,7 +48,7 @@ class ActionMenu extends Component {
   renderListItems(item, index) {
     return (
       <ListItem key={`${item}${index}`} button onClick={this.handleAddAction}>
-        <ListItemText primary={`navigate: ${item}`}/>
+        <ListItemText primary={`${item}`}/>
       </ListItem>
     );
   }
