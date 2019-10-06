@@ -26,7 +26,8 @@ class ActionMenuContainer extends Component {
 					const url = window.URL.createObjectURL(blob);
 					let a = document.createElement('a');
 					a.href = url;
-					a.download = 'app.apk';
+                    // TODO: Correct name from server
+                    a.download = 'app.apk';
 					a.click();
                 });
             }).catch(err => console.log(err));

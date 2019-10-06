@@ -75,7 +75,6 @@ class ActionMenu extends Component {
     const { component } = this.props;
     const { text } = component;
     const isButton = component.hasAction
-    console.log(component);
     return (
       <div style={{ width: "100%" }}>
         <ExpansionPanel>

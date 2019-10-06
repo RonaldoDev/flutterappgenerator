@@ -4,7 +4,6 @@ const getTemplate = (properties) => {
     const { color, text, action } = properties;
     const colorString = color === 'default'? 'Colors.blue' : `Color(0xff${color.replace('#', '')})`
     const actionPressed = getAction(action);
-    console.log(actionPressed);
     return `FlatButton(
             color: ${colorString},
             textColor: Colors.white,

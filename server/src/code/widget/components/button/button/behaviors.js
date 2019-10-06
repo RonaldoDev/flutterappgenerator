@@ -1,6 +1,5 @@
 
 function getAction(action) {
-    console.log(action.type)
     switch(action.type) {
         case 'navigate':
             return `Navigator.push(
