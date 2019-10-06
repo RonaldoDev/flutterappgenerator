@@ -1,6 +1,5 @@
 
-let id = 0
-export default (item) => {
+export default (id, item) => {
     switch(item) {
         case 'checkBox':
             return { i: `${++id}`, x: 0, y: 1, w: 4, h: 1, isResizable: false}

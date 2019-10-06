@@ -26,14 +26,15 @@ class ActionMenuContainer extends Component {
 					const url = window.URL.createObjectURL(blob);
 					let a = document.createElement('a');
 					a.href = url;
-					a.download = 'app.apk';
+                    // TODO: Correct name from server
+                    a.download = 'app.apk';
 					a.click();
                 });
             }).catch(err => console.log(err));
     };
     handleSave = (user) => {
-        debugger;
         const { views } = this.props;
+        
         firebase.database().ref('template/' + user.uid).set({
             username: user.email,
             views: JSON.stringify(views)

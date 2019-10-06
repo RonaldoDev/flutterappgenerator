@@ -26,6 +26,7 @@ class EditorGUIContainer extends Component {
 
   render() {
     const { componentList } = this.props;
+    
     return (
       <Grid container spacing={0}>
         <Grid item md={6}>

@@ -48,7 +48,7 @@ class ActionMenu extends Component {
   renderListItems(item, index) {
     return (
       <ListItem key={`${item}${index}`} button onClick={this.handleAddAction}>
-        <ListItemText primary={`navigate: ${item}`}/>
+        <ListItemText primary={`${item}`}/>
       </ListItem>
     );
   }
@@ -75,7 +75,6 @@ class ActionMenu extends Component {
     const { component } = this.props;
     const { text } = component;
     const isButton = component.hasAction
-    console.log(component);
     return (
       <div style={{ width: "100%" }}>
         <ExpansionPanel>

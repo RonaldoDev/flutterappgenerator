@@ -39,16 +39,16 @@ class ComponentList extends Component {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails style={{ width: "100%" }}>
         <List component="nav">
-          <ListItem style={{ width: "100%" }} key="01" button onClick={() =>this.handleAddComponent("button")}>
+          <ListItem style={{ width: "100%" }} key="b1" button onClick={() =>this.handleAddComponent("button")}>
               <ListItemText primary={"Button"}/>
             </ListItem>
-            <ListItem style={{ width: "100%" }} key="02" button onClick={() =>this.handleAddComponent("floatButton")}>
+            <ListItem style={{ width: "100%" }} key="b2" button onClick={() =>this.handleAddComponent("floatButton")}>
               <ListItemText primary={"Float Button"}/>
             </ListItem>
-            <ListItem style={{ width: "100%"} } key="03" button onClick={() =>this.handleAddComponent("iconButton")}>
+            <ListItem style={{ width: "100%"} } key="b3" button onClick={() =>this.handleAddComponent("iconButton")}>
               <ListItemText primary={"Icon Button"}/>
             </ListItem>
-            <ListItem style={{ width: "100%" }} key="04" button onClick={() =>this.handleAddComponent("iconLabelButton")}>
+            <ListItem style={{ width: "100%" }} key="b4" button onClick={() =>this.handleAddComponent("iconLabelButton")}>
               <ListItemText primary={"Icon Label Button"}/>
             </ListItem>
           </List>
