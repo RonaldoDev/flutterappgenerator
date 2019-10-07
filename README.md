@@ -1,5 +1,5 @@
 ## Flutter App Generator 
-is a project made for Final project in Universidade Federal de Santa Catarina.
+Project made by undergraduate thesis in Universidade Federal de Santa Catarina.
 http://flutterappgenerator.herokuapp.com
 
 Using a graphical interface you can generate cross-platform app's base on Dart/Flutter.
