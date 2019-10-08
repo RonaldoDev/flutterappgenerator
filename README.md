@@ -2,13 +2,15 @@
 Project made by undergraduate thesis in Universidade Federal de Santa Catarina.
 http://flutterappgenerator.herokuapp.com
 
+
+## THIS PROJECT IS WORK IN PROGRESS AND WILL BE RELEASE IN NOVEMBER 4th
+When monography finished, this file will be improved.
+
 Using a graphical interface you can generate cross-platform app's base on Dart/Flutter.
 
 Our architecture
 ![FlutterAppGenerator Structure](https://github.com/RonaldoDev/flutterappgenerator/blob/develop/Software%20architecture.png)
 
-## THIS PROJECT IS WORK IN PROCESS AND WILL BE RELEASE IN NOVEMBER 4th
-When monography finished, this file will be improved.
 
 ## Preparing environment
 
