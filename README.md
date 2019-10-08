@@ -1,5 +1,5 @@
 ## Flutter App Generator 
-Project made by undergraduate thesis in Universidade Federal de Santa Catarina.
+Project made by undergraduate thesis at Universidade Federal de Santa Catarina.
 http://flutterappgenerator.herokuapp.com
 
 
