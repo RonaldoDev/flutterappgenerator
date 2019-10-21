@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux';
 import { getCurrentTab, getViews } from '../../nav/nav.selectors';
 import { addView, saveViews, selectTab } from '../../nav/nav.actions';
 import ViewPropertyMenu from './viewPropertyMenu';
-import { throws } from 'assert';
 
 
 class ViewPropertyMenuContainer extends Component {

@@ -4,12 +4,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import { Button, Menu, MenuItem } from '@material-ui/core';
+import { Menu, MenuItem } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import i18n from 'i18next';
-import TabControlContainer from './tabControl.container';
-import firebase from '../../firebase';
+import firebase from '../../config/firebase';
 
 class ActionMenu extends Component {
   constructor() {
@@ -45,7 +44,6 @@ class ActionMenu extends Component {
     const {
       user,
       signOut,
-      signInWithGoogle,
     } = this.props;
     return (
       <div className={classes.root}>

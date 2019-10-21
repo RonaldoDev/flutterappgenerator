@@ -1,7 +1,7 @@
 
 
 const resources = {
-["en-US"]: {
+"en-US": {
     translation: {
       "generate": "Generate Code",
       "save": "Save",
@@ -9,7 +9,7 @@ const resources = {
       "add": "Add Interface"
     }
   },
-  ["pt-BR"]: {
+  "pt-BR": {
     translation: {
       "generate": "Gerar Código",
       "save": "Gravar",

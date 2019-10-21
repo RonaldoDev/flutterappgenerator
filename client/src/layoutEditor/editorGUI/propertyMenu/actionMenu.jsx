@@ -1,27 +1,16 @@
-import React, { Component, useState } from 'react';
-import { CirclePicker } from 'react-color';
-import { reduxForm, Field } from 'redux-form'
-// import MenuItem from 'material-ui/MenuItem'
-// import { RadioButton } from 'material-ui/RadioButton'
+import React, { Component } from 'react';
 import {
-  Grid,
-  MenuItem,
-  Select,
-  Box,
   TextField,
-  Container,
   ExpansionPanel,
   ExpansionPanelDetails,
   ExpansionPanelSummary,
   Typography,
-  Icon,
   List,
   ListItem,
   ListItemText
 
 } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-// import { ExpandMoreIcon } from '@material-ui/icons';
 
 class ActionMenu extends Component {
   constructor() {
@@ -38,7 +27,7 @@ class ActionMenu extends Component {
     console.log(value)
     this.send({ text: value });
   }
-  handleChangeColor(color, event) {
+  handleChangeColor(color) {
     console.log("color")
     this.send({ color: color.hex });
   }
@@ -74,7 +63,6 @@ class ActionMenu extends Component {
   render() {
     const { component } = this.props;
     const { text } = component;
-    const isButton = component.hasAction
     return (
       <div style={{ width: "100%" }}>
         <ExpansionPanel>

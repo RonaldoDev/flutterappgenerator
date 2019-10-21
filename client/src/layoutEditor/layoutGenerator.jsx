@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ActionMenuContainer from './nav/actionMenu.container'
 import ComponentListContainer from './component/componentList.container';
-import EditableContainer from './editorGUI/editorGUI.container';
 import TabControlContianer from './nav/tabControl.container'
 
 class LayoutGenerator extends Component {

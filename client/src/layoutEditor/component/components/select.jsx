@@ -5,7 +5,7 @@ import { Select, MenuItem, FormControl, InputLabel } from '@material-ui/core';
 export default function RenderSelect(props) {
   const { item, selectItem } = props
   const { widget, id, selected } = item;
-  const { color, text } = widget;
+  const { text } = widget;
         return (
           <div key={id} className={selected ? " selected" : ""} onClick={() => selectItem(id)}>
              <FormControl style={{width:'100%'}} >
