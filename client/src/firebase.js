@@ -1,13 +1,13 @@
 import firebase from 'firebase';
 
 const config = {
-    apiKey: "AIzaSyDT5qI3Mp8TfCRkzkDmGlCwmwco-BUUckc",
-    authDomain: "flutterappgenerator.firebaseapp.com",
-    databaseURL: "https://flutterappgenerator.firebaseio.com",
-    projectId: "flutterappgenerator",
-    storageBucket: "flutterappgenerator.appspot.com",
-    messagingSenderId: "809917831322",
-    appId: "1:809917831322:web:aa8025ffeeaa2a5fa02723"
+    apiKey: ${YOUR_API_KEY},
+    authDomain: "${YOUR_FIREBASE_DOMAIN}.firebaseapp.com",
+    databaseURL: "https://${YOUR_FIREBASE_DOMAIN}r.firebaseio.com",
+    projectId: "${YOUR_FIREBASE_DOMAIN}",
+    storageBucket: "${YOUR_FIREBASE_DOAMIN}.appspot.com",
+    messagingSenderId: "${YOUR_FIREBASE_ID}",
+    appId: ${YOUR_APP_KEY}
 };
 firebase.initializeApp(config);
 
