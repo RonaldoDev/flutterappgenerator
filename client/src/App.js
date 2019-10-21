@@ -3,15 +3,14 @@ import withFirebaseAuth from 'react-with-firebase-auth'
 import './App.css';
 import LayoutGeneratorContainer from './layoutEditor/layoutGenerator.container';
 import i18n from "i18next";
-import resources from './i18n';
-import firebase from './firebase';
+import resources from './config/i18n';
+import firebase from './config/firebase';
 
 function App(props) {
   let userLang = navigator.language || navigator.userLanguage; 
   init18n(userLang);
   const {
     user,
-    signOut,
     signInWithGoogle,
   } = props;
   return (

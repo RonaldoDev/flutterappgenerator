@@ -1,5 +1,4 @@
 import React from 'react';
-import { func, object } from 'prop-types';
 import { Button } from '@material-ui/core';
 
 export default function RenderButton(props) {

@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Button, Toolbar } from '@material-ui/core';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -22,7 +20,7 @@ class TabControl extends Component {
       };
     }
 
-    handleChange(event, newValue) {
+    handleChange(newValue) {
         this.props.selectTab(newValue);
         this.setState({ value: 1})
     }

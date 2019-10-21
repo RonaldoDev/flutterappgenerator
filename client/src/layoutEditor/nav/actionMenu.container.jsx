@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { getViews } from './nav.selectors';
 import { arrayOf, object } from 'prop-types';
 // import { save } from './nav.actions';    
 import ActionMenu from './actionMenu';
-import firebase from '../../firebase';
+import firebase from '../../config/firebase';
 
 
 class ActionMenuContainer extends Component {

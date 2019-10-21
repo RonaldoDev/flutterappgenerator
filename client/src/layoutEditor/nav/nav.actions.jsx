@@ -1,6 +1,5 @@
 import { ADD_VIEW, SELECT_TAB, SAVE_VIEWS } from "../../reducers/actionTypes";
 
-let id = 0
 export const addView = content => ({
     type: ADD_VIEW,
     payload: {

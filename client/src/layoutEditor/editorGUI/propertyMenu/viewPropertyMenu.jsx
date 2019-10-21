@@ -1,22 +1,8 @@
 import React, { Component } from 'react';
 import {
-    Grid,
-    MenuItem,
-    Select,
     Box,
-    TextField,
-    Container,
-    ExpansionPanel,
-    ExpansionPanelDetails,
-    ExpansionPanelSummary,
-    Typography,
-    Icon,
-    List,
-    ListItem,
-    ListItemText
-  
+    TextField  
   } from '@material-ui/core'
-import { throws } from 'assert';
 class ViewPropertyMenu extends Component {
     constructor(){
         super();

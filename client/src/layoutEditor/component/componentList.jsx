@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
 import { func, arrayOf, string } from 'prop-types';
 import {
-  Grid,
-  MenuItem,
-  Select,
-  Box,
-  TextField,
   Container,
   ExpansionPanel,
   ExpansionPanelDetails,
   ExpansionPanelSummary,
   Typography,
-  Icon,
   List,
   ListItem,
   ListItemText

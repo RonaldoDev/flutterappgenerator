@@ -5,24 +5,19 @@ import PropertyMenu from './propertyMenuForm';
 import { getComponentsToRender, getSelectedComponent } from '../editorGUI.selectors';
 import { getCurrentTab, getViews } from '../../nav/nav.selectors';
 import { updateComponent, selectComponent } from '../editorGUI.actions';
-import { arrayOf, func, object } from 'prop-types';
-import {
-
-  Box,
-
-} from '@material-ui/core'
+import { func, object } from 'prop-types';
+import { Box } from '@material-ui/core'
 import ViewPropertyMenuContainer from './viewPropertyMenu.container';
 
 class PropertyMenuContainer extends Component {  
   handleUpdateComponents = (value) => {
-    // 
     const { components, updateComponent, component } = this.props
-    const componentPositions = components.reduce((som, comp) => {
+    const componentPositions = components.reduce((edited_components, comp) => {
       if(comp.id === component.id) {
         comp.widget[Object.keys(value)[0]] = Object.values(value)[0];
       }
-      som.push(comp);
-      return som;
+      edited_components.push(comp);
+      return edited_components;
     }, []);
     updateComponent(componentPositions)
   }
@@ -41,8 +36,7 @@ class PropertyMenuContainer extends Component {
   }
   render() {
     const { component, views, currentTab } = this.props;
-    const initial = { text: component.text, color: component.color  }
-    const viewsFiltered = views.filter(view => view.id != currentTab.id)
+    const viewsFiltered = views.filter(view => view.id !== currentTab.id)
     
     if (component.id)
       return (
@@ -57,10 +51,7 @@ class PropertyMenuContainer extends Component {
     return (
       <Box className="prop-menu">
         <ViewPropertyMenuContainer 
-          // handleUpdateComponents={this.handleUpdateComponents}
-          // deleteItem={this.deleteItem}
-          // component={component}
-          view={views.filter(v => v.id == currentTab.id)[0]}
+          view={views.filter(v => v.id === currentTab.id)[0]}
         />
       </Box>);
   }

@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
 import store from './store';
-import './i18n';
+import './config/i18n';
 
 
 ReactDOM.render(
