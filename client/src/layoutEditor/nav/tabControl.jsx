@@ -20,7 +20,7 @@ class TabControl extends Component {
       };
     }
 
-    handleChange(newValue) {
+    handleChange(_, newValue) {
         this.props.selectTab(newValue);
         this.setState({ value: 1})
     }

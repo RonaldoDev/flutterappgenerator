@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getViews } from './nav.selectors';
+import { getViews, getLastId } from './nav.selectors';
 import { arrayOf, object } from 'prop-types';
 // import { save } from './nav.actions';    
 import ActionMenu from './actionMenu';
@@ -32,11 +32,12 @@ class ActionMenuContainer extends Component {
             }).catch(err => console.log(err));
     };
     handleSave = (user) => {
-        const { views } = this.props;
+        const { compId, views } = this.props;
         
         firebase.database().ref('template/' + user.uid).set({
             username: user.email,
-            views: JSON.stringify(views)
+            views: JSON.stringify(views),
+            compId: compId
           });
     }
     render(){
@@ -55,7 +56,8 @@ ActionMenuContainer.propTypes = {
 
 const mapStateToPros = state => {
     const views = getViews(state);
-    return { views };
+    const compId = getLastId(state);
+    return { views, compId };
 }
 
 // const mapDispatchToProps = dispatch => 

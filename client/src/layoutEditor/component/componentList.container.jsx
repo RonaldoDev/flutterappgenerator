@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getComponentList, getComponentsToRender } from '../../reducers/selectors';
+import { getComponentList, getTheme } from '../../reducers/selectors';
+import { getLastId } from '../nav/nav.selectors';
 import { addComponent } from './components.actions';    
 import ComponentList from './componentList';
 import { arrayOf, func, number, string } from 'prop-types';
@@ -35,8 +36,10 @@ ComponentListContainer.propTypes = {
 
 const mapStateToPros = state => {
     const componentList = getComponentList(state);
-    const componentsList = getComponentsToRender(state);
-    return { componentList, lastId: componentsList.length };
+    const compId = getLastId(state);
+    const theme = getTheme(state);
+
+    return { componentList, lastId: compId, theme };
 }
 
 const mapDispatchToProps = dispatch => 

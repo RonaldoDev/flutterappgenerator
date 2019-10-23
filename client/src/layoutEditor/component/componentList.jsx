@@ -23,7 +23,7 @@ class ComponentList extends Component {
       addComponent(componentName);
     }
     renderButton() {
-      return <ExpansionPanel style={{ width: "100%" }}>
+      return <ExpansionPanel key="z1" style={{ width: "100%" }}>
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"

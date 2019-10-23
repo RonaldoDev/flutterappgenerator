@@ -3,10 +3,12 @@ import { ADD_COMPONENT, UPDATE_COMPONENTS, SELECT_COMPONENT, EDIT_COMPONENT, SEL
 const initialState = {
   allIds: [],
   byIds: {},
+  compId: 0,
   components: ['textField', 'button', 'checkBox', 'appbar', 'select'],
   componentsRender: [],
   views: [{ id: 0, title: "view0",   componentId: 0, components: [], selectedComponent: {}}],
   currentTab: { id: 0, title: "view0",   componentId: 0, components: [], selectedComponent: {}},
+  theme: { color: "primary", textColor: "#FFFFFF" }
 
 };
 
@@ -20,10 +22,11 @@ export default function(state = initialState, action) {
         byIds: {
           ...state.byIds,
           [id]: {
-            content,
+            content,        
             completed: false
           }
-        },     
+        },
+        compId: ++state.compId, 
         componentsRender: [...state.componentsRender, content], 
         currentTab: { ...state.currentTab,  componentId : content.id, components: [...state.componentsRender, content]}
       };
@@ -75,8 +78,9 @@ export default function(state = initialState, action) {
       const content = action.payload;
       return {
         ...state,
-        views: content,
-        currentTab: { ...content[0]}
+        compId: content.compId,
+        views: content.views,
+        currentTab: { ...content.views[0]}
       };
     }
     default:
