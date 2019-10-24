@@ -5,6 +5,7 @@ import { arrayOf, object } from 'prop-types';
 // import { save } from './nav.actions';    
 import ActionMenu from './actionMenu';
 import firebase from '../../config/firebase';
+import { getTheme } from '../../reducers/selectors';
 
 
 class ActionMenuContainer extends Component {
@@ -32,12 +33,13 @@ class ActionMenuContainer extends Component {
             }).catch(err => console.log(err));
     };
     handleSave = (user) => {
-        const { compId, views } = this.props;
+        const { compId, views, theme } = this.props;
         
         firebase.database().ref('template/' + user.uid).set({
             username: user.email,
             views: JSON.stringify(views),
-            compId: compId
+            compId: compId,
+            theme: theme
           });
     }
     render(){
@@ -57,7 +59,8 @@ ActionMenuContainer.propTypes = {
 const mapStateToPros = state => {
     const views = getViews(state);
     const compId = getLastId(state);
-    return { views, compId };
+    const theme = getTheme(state);
+    return { views, compId, theme };
 }
 
 // const mapDispatchToProps = dispatch => 

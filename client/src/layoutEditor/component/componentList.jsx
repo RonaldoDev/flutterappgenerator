@@ -25,25 +25,25 @@ class ComponentList extends Component {
     renderButton() {
       return <ExpansionPanel key="z1" style={{ width: "100%" }}>
         <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={<ExpandMoreIcon style={{ fontSize: "1.5rem"  }} />}
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>Buttons</Typography>
+          <Typography style={{ fontSize: 14 }}>Buttons</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails style={{ width: "100%" }}>
         <List component="nav">
           <ListItem style={{ width: "100%" }} key="b1" button onClick={() =>this.handleAddComponent("button")}>
-              <ListItemText primary={"Button"}/>
+              <ListItemText primaryTypographyProps={{ style: { fontSize: 14 }}} primary={"Button"}/>
             </ListItem>
             <ListItem style={{ width: "100%" }} key="b2" button onClick={() =>this.handleAddComponent("floatButton")}>
-              <ListItemText primary={"Float Button"}/>
+              <ListItemText primaryTypographyProps={{ style: { fontSize: 14 }}} primary={"Float Button"}/>
             </ListItem>
-            <ListItem style={{ width: "100%"} } key="b3" button onClick={() =>this.handleAddComponent("iconButton")}>
-              <ListItemText primary={"Icon Button"}/>
+            <ListItem style={{ width: "100%" }} key="b3" button onClick={() =>this.handleAddComponent("iconButton")}>
+              <ListItemText primaryTypographyProps={{ style: { fontSize: 14 }}} primary={"Icon Button"}/>
             </ListItem>
-            <ListItem style={{ width: "100%" }} key="b4" button onClick={() =>this.handleAddComponent("iconLabelButton")}>
-              <ListItemText primary={"Icon Label Button"}/>
+            <ListItem style={{ width: "100%"}} key="b4" button onClick={() =>this.handleAddComponent("iconLabelButton")}>
+              <ListItemText primaryTypographyProps={{ style: { fontSize: 14 }}} primary={"Icon Label Button"}/>
             </ListItem>
           </List>
         </ExpansionPanelDetails>
@@ -58,8 +58,8 @@ class ComponentList extends Component {
         default:
           return (
         
-            <ListItem key={`${item}${index}`} button onClick={() => this.handleAddComponent(item)}>
-              <ListItemText primary={item}/>
+            <ListItem  key={`${item}${index}`} button onClick={() => this.handleAddComponent(item)}>
+              <ListItemText primaryTypographyProps={{ style: { fontSize: 14 }}}  primary={item}/>
             </ListItem>
           );
       }
@@ -68,8 +68,8 @@ class ComponentList extends Component {
     render() {
       const { components } = this.props;
       return (
-        <Container maxWidth="sm">
-          <List component="nav">
+        <Container style={{ fontSize: 14 }}  maxWidth="sm">
+          <List style={{ fontSize: 14 }}  component="nav">
             {components.map((item, index) => this.renderListItems(item, index))}
           </List>
           

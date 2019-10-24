@@ -7,6 +7,9 @@ import EditorGUI from './editorGUI';
 import PropertyMenuContainer from './propertyMenu/propertyMenu.container';
 import { getComponentsToRender } from './editorGUI.selectors';
 import { arrayOf, func, object } from 'prop-types';
+import { getTheme } from '../../reducers/selectors';
+import { ThemeProvider } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
 
 class EditorGUIContainer extends Component {
   constructor() {
@@ -25,15 +28,20 @@ class EditorGUIContainer extends Component {
   }
 
   render() {
-    const { componentList } = this.props;
-    
+    const { componentList, theme } = this.props;
+    const muiTheme = createMuiTheme({
+      typography: theme.typography,
+      palette: theme.palette
+    });
     return (
       <Grid container spacing={0}>
         <Grid item md={6}>
+          <ThemeProvider theme={muiTheme}>
             <EditorGUI
               components={componentList}
               updateComponent={this.handleUpdateComponents}
               selectComponent={this.handleSelectComponent} />
+          </ThemeProvider>
         </Grid>
         <Grid item xs={6}>
           <PropertyMenuContainer />
@@ -50,7 +58,8 @@ EditorGUIContainer.propTypes = {
 
 const mapStateToPros = state => {
   const componentList = getComponentsToRender(state);
-  return { componentList };
+  const theme = getTheme(state)
+  return { componentList, theme };
 }
 
 const mapDispatchToProps = dispatch =>

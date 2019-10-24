@@ -1,23 +1,34 @@
 import React, { Component } from 'react';
 import {
-    Box,
-    TextField  
-  } from '@material-ui/core'
+  Box,
+  ExpansionPanel,
+  ExpansionPanelDetails,
+  ExpansionPanelSummary,
+  Typography,
+} from '@material-ui/core';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import AppSettingsContainer from './appSettings.container';
+
+
 class ViewPropertyMenu extends Component {
-    constructor(){
-        super();
-        this.handleSave = this.handleSave.bind(this);
-    }
-    handleSave(value) {
-        const newView = { ...this.props.view, title: value} 
-        this.props.save(newView);
-    }
-    render(){
-        const { view } = this.props;
-        return (<Box style={{height: "500px"}}>
-            <TextField label="Nome" fullWidth value={view.title} onChange={evt => this.handleSave(evt.target.value)} />
-            </Box>)
-    }
+  render() {
+    return (<Box style={{ height: "500px" }}>
+     
+      <ExpansionPanel>
+        <ExpansionPanelSummary
+          expandIcon={<ExpandMoreIcon style={{ fontSize: "1.5rem" }} />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography style={{ fontSize: 14 }} >App Settings</Typography>
+        </ExpansionPanelSummary>
+        <ExpansionPanelDetails>
+          <AppSettingsContainer />
+      </ExpansionPanelDetails>
+      </ExpansionPanel>
+
+    </Box>)
+  }
 }
 
 export default ViewPropertyMenu
