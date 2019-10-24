@@ -1,6 +1,6 @@
 const expectExport = require("expect");
 
-const { buildWidgets } = require('./index')
+const { buildWidgetsTree } = require('./index')
 
 const components_mock = [
  { 
@@ -14,7 +14,6 @@ const components_mock = [
 ];
 
 test('Test build widget', () => {
-    const widget = buildWidgets(components_mock);
-    console.log(widget[0])
+    const widget = buildWidgetsTree(components_mock);
     expectExport(widget[0]).toMatch(/^Row/)
 });
