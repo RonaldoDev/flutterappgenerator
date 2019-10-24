@@ -8,6 +8,7 @@ cache:
 language: node_js
 node_js:
   - "stable"
+before_install: cd server
 install:
   - yarn install
 script:
