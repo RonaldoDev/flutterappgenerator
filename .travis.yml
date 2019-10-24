@@ -20,4 +20,4 @@ cache:
 
 script:
   - cd server
-  - yarn run test-ci-partial
+  - yarn test
