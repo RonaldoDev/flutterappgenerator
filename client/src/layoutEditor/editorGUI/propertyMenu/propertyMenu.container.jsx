@@ -37,7 +37,6 @@ class PropertyMenuContainer extends Component {
   render() {
     const { component, views, currentTab } = this.props;
     const viewsFiltered = views.filter(view => view.id !== currentTab.id)
-    
     if (component.id)
       return (
         <Box className="prop-menu">

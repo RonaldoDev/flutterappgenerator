@@ -15,3 +15,5 @@ export const SELECT_TAB = "SELECT_TAB"
 export const SAVE_VIEWS = "SAVE_VIEWS"
 
 export const FETCH_VIEWS = "FETCH_VIEWS"
+
+export const CHANGE_THEME = "CHANGE_THEME"

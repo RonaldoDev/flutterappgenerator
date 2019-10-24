@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Container } from '@material-ui/core';
+import { AppBar, Toolbar, IconButton, Typography, Container } from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
 import ReactGridLayout from 'react-grid-layout';
 import "react-grid-layout/css/styles.css";
 import './style.css';
@@ -16,9 +17,6 @@ class EditorGUI extends Component {
     super();
     this.state = {
       selected: false,
-      text: "default",
-      cssClass: " selected",
-      color: "primary",
       isLoading: false,
       todos: {}
     }
@@ -81,18 +79,29 @@ class EditorGUI extends Component {
           return (
             <Container maxWidth="lg">
             <div className="phone">
-             <div className="screen">        
+             <div className="screen">
+             <AppBar color="primary" position="static">
+              <Toolbar>
+              <IconButton edge="start" color="inherit" aria-label="menu">
+                  <MenuIcon />
+                </IconButton>
+                <Typography variant="h6" style={{ flexGrow: 1}}>
+                  News
+                </Typography>
+                
+              </Toolbar>
+            </AppBar>        
                 <ReactGridLayout cols={4}
                             onLayoutChange={this.onLayoutChange}
                             rowHeight={40}
-                            width={300}
+                            width={340}
                             static={false}
                             isDraggable={true}
                             useCSSTransforms
                             compactType={null}
                             preventCollision={true}
                             isResizable={true}
-                            className="layout" maxRows={20} layout={layout} >
+                            className="layout" maxRows={10} layout={layout} >
                 {components.map(item => this.renderItems(item))}
                 </ReactGridLayout>
              </div>

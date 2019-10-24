@@ -6,6 +6,8 @@ import i18n from "i18next";
 import resources from './config/i18n';
 import firebase from './config/firebase';
 
+
+
 function App(props) {
   let userLang = navigator.language || navigator.userLanguage; 
   init18n(userLang);
@@ -22,7 +24,9 @@ function App(props) {
       <header className="App-header">
       {
             user
-              ?  <LayoutGeneratorContainer user={user} />
+              ?  
+                  <LayoutGeneratorContainer user={user} />
+              
               : <p>Please sign in.</p>
           }
 

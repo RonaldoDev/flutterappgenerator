@@ -17,7 +17,7 @@ export default (id, item) => {
 }
 
 export const widget = (id, componentType) => ({
-    color: "default",
+    color: "primary",
     text: "default",
     textColor: "black",
     fontSize: 12,

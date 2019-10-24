@@ -45,11 +45,11 @@ class ActionMenu extends Component {
     const { views } = this.props;
     return(<ExpansionPanel>
           <ExpansionPanelSummary
-            expandIcon={<ExpandMoreIcon />}
+            expandIcon={<ExpandMoreIcon style={{ fontSize: "1.5rem"  }} />}
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography>Method Actions</Typography>
+            <Typography style={{ fontSize: 14 }} >Method Actions</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
           <List component="nav">
@@ -67,11 +67,11 @@ class ActionMenu extends Component {
       <div style={{ width: "100%" }}>
         <ExpansionPanel>
           <ExpansionPanelSummary
-            expandIcon={<ExpandMoreIcon />}
+            expandIcon={<ExpandMoreIcon style={{ fontSize: "1.5rem"  }} />}
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography>Validation Actions</Typography>
+            <Typography style={{ fontSize: 14 }}>Validation Actions</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <TextField label="Nome" value={text} onChange={evt => this.onSetName(evt.target.value)} />

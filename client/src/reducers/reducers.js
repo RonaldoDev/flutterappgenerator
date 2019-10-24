@@ -1,4 +1,14 @@
-import { ADD_COMPONENT, UPDATE_COMPONENTS, SELECT_COMPONENT, EDIT_COMPONENT, SELECT_TAB, ADD_VIEW, SAVE_VIEWS, FETCH_VIEWS } from "./actionTypes";
+import { 
+  ADD_COMPONENT,
+  UPDATE_COMPONENTS,
+  SELECT_COMPONENT,
+  EDIT_COMPONENT,
+  SELECT_TAB,
+  ADD_VIEW, 
+  SAVE_VIEWS,
+  FETCH_VIEWS,
+  CHANGE_THEME
+} from "./actionTypes";
 
 const initialState = {
   allIds: [],
@@ -8,7 +18,26 @@ const initialState = {
   componentsRender: [],
   views: [{ id: 0, title: "view0",   componentId: 0, components: [], selectedComponent: {}}],
   currentTab: { id: 0, title: "view0",   componentId: 0, components: [], selectedComponent: {}},
-  theme: { color: "primary", textColor: "#FFFFFF" }
+  theme: {
+    typography: {
+      useNextVariants: true,
+      fontSize: 14
+    },
+    palette: {
+      primary: {
+        light: '#757ce8',
+        main: '#009be5',
+        dark: '#002884',
+        contrastText: '#fff',
+      },
+      secondary: {
+        light: '#ff7961',
+        main: '#f44336',
+        dark: '#ba000d',
+        contrastText: '#000',
+      },
+    }
+  }
 
 };
 
@@ -80,8 +109,19 @@ export default function(state = initialState, action) {
         ...state,
         compId: content.compId,
         views: content.views,
+        theme: { ...content.theme },
         currentTab: { ...content.views[0]}
       };
+    }
+    case CHANGE_THEME: {
+      const { content } = action.payload;
+      return {
+        ...state,
+        theme: {
+          ...state.theme,
+          ...content
+        }
+      }
     }
     default:
       return state;

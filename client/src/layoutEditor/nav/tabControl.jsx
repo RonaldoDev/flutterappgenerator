@@ -41,9 +41,12 @@ class TabControl extends Component {
         const { currentTab, views, addView } = this.props;
         return (
             <div style={{ flexGrow: 1}}>
-                <AppBar position="static" style={{ flexGrow: 1}}>
+                <AppBar position="static" style={{ 
+                backgroundColor: "#303f9f",
+                flexGrow: 1
+              }} >
                 <Toolbar>
-                <Button color="inherit" onClick={() => addView()}>{i18n.t("add")}</Button>
+                <Button style={{ fontSize: 14 }} color="inherit" onClick={() => addView()}>{i18n.t("add")}</Button>
                     <Tabs 
                         value={currentTab.id} 
                         onChange={this.handleChange} 

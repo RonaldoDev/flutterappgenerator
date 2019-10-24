@@ -1,5 +1,5 @@
 
-import { UPDATE_COMPONENTS, SELECT_COMPONENT, EDIT_COMPONENT } from "../../reducers/actionTypes";
+import { UPDATE_COMPONENTS, SELECT_COMPONENT, EDIT_COMPONENT, CHANGE_THEME } from "../../reducers/actionTypes";
 
 export const updateComponent = content => ({
     type: UPDATE_COMPONENTS,
@@ -17,6 +17,13 @@ export const selectComponent = content => ({
 
 export const editComponent = content => ({
     type: EDIT_COMPONENT,
+    payload: {
+        content
+    }
+});
+
+export const changeTheme = content => ({
+    type: CHANGE_THEME,
     payload: {
         content
     }

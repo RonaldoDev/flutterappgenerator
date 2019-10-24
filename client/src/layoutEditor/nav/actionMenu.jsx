@@ -47,20 +47,23 @@ class ActionMenu extends Component {
     } = this.props;
     return (
       <div className={classes.root}>
-        <AppBar position="static">
+        <AppBar style={{ 
+                backgroundColor: "#303f9f",
+                font : 14
+              }} position="static">
           <Toolbar>
             <IconButton 
               edge="start" 
-              className={classes.menuButton}
+              // className={classes.menuButton}
               
               color="inherit" 
               aria-controls="simple-menu" aria-haspopup="true" 
               onClick={this.handleToogleMenu}>
-              <MenuIcon />
+              <MenuIcon style={{ fontSize : "1.5rem" }} />
             </IconButton>
             <Menu
               id="simple-menu"
-              anchorEl={anchorEl}
+              // anchorEl={anchorEl}
               keepMounted
               style={{ marginTop: "50px" }}
               getContentAnchorEl={null}
@@ -71,7 +74,9 @@ class ActionMenu extends Component {
               <MenuItem onClick={() => this.props.save(user)}>{i18n.t("save")}</MenuItem>
               <MenuItem onClick={signOut}>{i18n.t("signout")}</MenuItem>
             </Menu>
-            <Typography variant="h6" className={classes.title}>
+            <Typography style={{ 
+                fontSize : 22
+              }} variant="h6" className={classes.title}>
               {i18n.t("app-title")}
             </Typography>
           </Toolbar>
