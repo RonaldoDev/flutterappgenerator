@@ -15,4 +15,5 @@ install:
   - npm i -g yarn
   - yarn
 script:
+  - cd server
   - yarn test
