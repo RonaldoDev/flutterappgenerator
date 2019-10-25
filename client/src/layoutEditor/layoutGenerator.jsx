@@ -17,7 +17,7 @@ class LayoutGenerator extends Component {
 
         return (
         <Grid container style={{flexGrow: 1}} spacing={0}>
-            <Grid item xs={3}> <div><ActionMenuContainer /><ComponentListContainer /></div></Grid>
+            <Grid style={{ backgroundColor: "#FFFFFF" }}item xs={3}> <div><ActionMenuContainer /><ComponentListContainer /></div></Grid>
             {/* <Grid item xs={3}>
                 <Grid container justify="center" spacing={0}>
                 <ComponentListContainer />

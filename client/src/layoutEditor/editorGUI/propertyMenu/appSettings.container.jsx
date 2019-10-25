@@ -14,7 +14,7 @@ class AppSettingsContainer extends Component {
        this.props.changeTheme(param)
       }
     render(){
-        return (<AppSettings />)
+        return (<AppSettings save={this.saveView} />)
     }
 }
 
