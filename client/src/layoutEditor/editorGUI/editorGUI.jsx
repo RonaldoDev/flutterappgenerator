@@ -10,6 +10,7 @@ import renderCheckbox from '../component/components/checkbox';
 import renderTextField from '../component/components/inputText';
 import renderAppBar from '../component/components/appbar';
 import renderSelect from '../component/components/select';
+import renderIconButton from '../component/components/iconButton';
 
 
 class EditorGUI extends Component {
@@ -54,6 +55,8 @@ class EditorGUI extends Component {
     switch(item.type) {
       case 'button':
         return renderButton({ item, selectItem: this.selectItem });
+      case 'iconButton':
+        return renderIconButton({ item, selectItem: this.selectItem });
       case 'textField':
         return renderTextField({ item, selectItem: this.selectItem });
       case 'checkBox':
@@ -80,6 +83,7 @@ class EditorGUI extends Component {
             <Container maxWidth="lg">
             <div className="phone">
              <div className="screen">
+           
              <AppBar color="primary" position="static">
               <Toolbar>
               <IconButton edge="start" color="inherit" aria-label="menu">
@@ -90,7 +94,7 @@ class EditorGUI extends Component {
                 </Typography>
                 
               </Toolbar>
-            </AppBar>        
+            </AppBar>      
                 <ReactGridLayout cols={4}
                             onLayoutChange={this.onLayoutChange}
                             rowHeight={40}

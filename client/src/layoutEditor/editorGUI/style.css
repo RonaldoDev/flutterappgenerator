@@ -179,3 +179,7 @@ custom-box {
   #form-label {
     color: black;
   }
+
+  .icon-button {
+    background-color: white;
+  }

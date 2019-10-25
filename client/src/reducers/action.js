@@ -3,7 +3,6 @@ import { viewsRef } from '../config/firebase';
 
 export const fetchViews = uid => async dispatch => {
     viewsRef.child(uid).on("value", snapshot => {
-      debugger; 
       return  snapshot.val() ?
         dispatch({
         type: FETCH_VIEWS,

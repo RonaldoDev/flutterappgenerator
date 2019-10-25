@@ -18,7 +18,7 @@ class ComponentListContainer extends Component {
             id: component.i,
             type: componentType,
             selected: false, 
-            widget: widget(component.i, componentType)
+            widget: widget(component.i, componentType, "add")
         };
         this.props.addComponent(comp);
     };

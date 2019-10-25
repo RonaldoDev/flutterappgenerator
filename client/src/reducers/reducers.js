@@ -14,7 +14,7 @@ const initialState = {
   allIds: [],
   byIds: {},
   compId: 0,
-  components: ['textField', 'button', 'checkBox', 'appbar', 'select'],
+  components: ['textField', 'button', 'checkBox','select', 'iconButton'],
   componentsRender: [],
   views: [{ id: 0, title: "view0",   componentId: 0, components: [], selectedComponent: {}}],
   currentTab: { id: 0, title: "view0",   componentId: 0, components: [], selectedComponent: {}},
