@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getCurrentTab, getViews } from '../../nav/nav.selectors';
-import { addView, saveViews, selectTab } from '../../nav/nav.actions';
-import ViewPropertyMenu from './viewPropertyMenu';
+import { getCurrentTab, getViews } from '../../../nav/nav.selectors';
+import { addView, saveViews, selectTab } from '../../../nav/nav.actions';
+import ViewPropertyMenu from '../viewPropertyMenu';
 
 
-class ViewSettingsContainer extends Component {
+class ViewPropertyMenuContainer extends Component {
     constructor() {
         super();
         this.saveView = this.saveView.bind(this);
@@ -36,4 +36,4 @@ const mapStateToPros = state => {
 const mapDispatchToProps = dispatch =>
     bindActionCreators({ addView, saveViews, selectTab }, dispatch);
 
-export default connect(mapStateToPros, mapDispatchToProps)(ViewSettingsContainer);
+export default connect(mapStateToPros, mapDispatchToProps)(ViewPropertyMenuContainer);

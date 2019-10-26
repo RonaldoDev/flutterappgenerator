@@ -3,12 +3,19 @@ import { func, arrayOf, string } from 'prop-types';
 import {
   Box,
   Button,
-  Container,
+  Divider,
   List,
   ListItem,
+  ListItemText,
+  Typography
 
 } from '@material-ui/core'
-import { Edit as EditIcon } from '@material-ui/icons';
+import { 
+  CameraAlt as CameraArtIcon,
+  Edit as EditIcon ,
+  Map as MapIcon,
+  Http as HttpIcon,
+} from '@material-ui/icons';
 
 class ComponentList extends Component {
   constructor() {
@@ -24,7 +31,13 @@ class ComponentList extends Component {
     switch (item) {
       case "button":
         return (<ListItem style={{ width: "100%" }} key="1" button onClick={() => this.handleAddComponent("button")}>
-          <img src="imgs/button.png" alt="Button" style={{ maxWidth: "100%", height: "auto" }} />
+                   <Button
+              variant="contained"
+              color="default"
+              style={{ backgroundColor: "#FFFFFF", width: "100%", fontSize: 12}}
+            >
+              Button
+            </Button>
         </ListItem>)
 
       case "textField":
@@ -57,12 +70,60 @@ class ComponentList extends Component {
             </Button>
 
           </ListItem>);
+      case "camera":
+          return (
+            <ListItem className="icon-button" style={{ width: "100%" }} key="6" button onClick={() => this.handleAddComponent(item)}>
+  
+              <Button
+                variant="contained"
+                color="default"
+                style={{ backgroundColor: "#FFFFFF", width: "100%", fontSize: 12}}
+                startIcon={<CameraArtIcon />}
+              >
+                Camera
+              </Button>
+  
+            </ListItem>);
+       case "map":
+          return (
+            <ListItem className="icon-button" style={{ width: "100%" }} key="7" button onClick={() => this.handleAddComponent(item)}>
+  
+              <Button
+                variant="contained"
+                color="default"
+                style={{ backgroundColor: "#FFFFFF", width: "100%", fontSize: 12 }}
+                startIcon={<MapIcon />}
+              >
+                Map
+              </Button>
+  
+            </ListItem>);
+      case "webview":
+          return (
+            <ListItem className="icon-button" style={{ width: "100%" }} key="8" button onClick={() => this.handleAddComponent(item)}>
+  
+              <Button
+                variant="contained"
+                color="default"
+                style={{ backgroundColor: "#FFFFFF", width: "100%", fontSize: 12}}
+                startIcon={<HttpIcon />}
+              >
+                Web View
+              </Button>
+  
+            </ListItem>);
 
       default:
         return (
-
-          <ListItem key={`${item}${index}`} button onClick={() => this.handleAddComponent(item)}>
+          <div style={{ backgroundColor: "#ebebf0" }}>
+          <ListItem key={`${item}${index}`}>
+            <ListItemText primary={<Typography type="body2" style={{ color: '#090C12', fontWeight: "bold",  fontSize: 15 }}>{item}</Typography>} ></ListItemText>
+           
           </ListItem>
+            <Divider style={{ height: 2, color:"#828282" }} />
+        
+          </div>
+          
         );
     }
 
@@ -70,13 +131,14 @@ class ComponentList extends Component {
   render() {
     const { components } = this.props;
     return (
-      <Container style={{ fontSize: 14 }} maxWidth="sm">
+   
         <Box style={{ backgroundColor: "#FFFFFF", width: "100%" }}>
           <List style={{ fontSize: 14 }} component="nav">
             {components.map((item, index) => this.renderListItems(item, index))}
+         
           </List>
         </Box>
-      </Container>
+ 
     );
   }
 }

@@ -9,9 +9,9 @@ import {
   Box,
   Button
 } from '@material-ui/core';
-import TextMenu from './textMenu';
-import StyleMenu from './styleMenu';
-import ActionMenu from './actionMenu';
+import TextMenu from './componentMenu/textMenu';
+import StyleMenu from './componentMenu/styleMenu';
+import ActionMenu from './componentMenu/actionMenu';
 
 
 function TabPanel(props) {
@@ -59,11 +59,11 @@ export default function SimpleTabs(props) {
     setValue(newValue);
   };
   const renderButton = (deleteItem) => {
-    return ( <Button style={{ marginTop: 10 }}variant="contained" onClick={deleteItem}>Delete Item</Button>);
+    return ( <Button style={{ marginTop: 10, fontSize: 14 }} variant="contained" onClick={deleteItem}>Delete Item</Button>);
   }
   return (
     <div className={classes.root}>
-      <AppBar style={{ backgroundColor: "#303f9f" }} position="static">
+      <AppBar style={{ backgroundColor: "#ebebf0", color: "#090C12" }} position="static">
         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
           <Tab label="Text" {...a11yProps(0)} />
           <Tab label="Style" {...a11yProps(1)} />

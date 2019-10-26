@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getCurrentTab, getViews } from './nav.selectors';
-import { addView, saveViews, selectTab } from './nav.actions';
+import { getCurrentTab } from './nav.selectors';
+import { getViews } from '../../selectors/view';
+import { addView, saveViews } from '../../storeActions/view';
+import { selectTab } from './nav.actions';
 import TabControl from './tabControl';
-// import { arrayOf, func, string } from 'prop-types';
-// import getComponent from './components';
 
 class TabControlContainer extends Component {
   constructor() {

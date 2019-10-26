@@ -42,7 +42,8 @@ class TabControl extends Component {
         return (
             <div style={{ flexGrow: 1}}>
                 <AppBar position="static" style={{ 
-                backgroundColor: "#303f9f",
+                backgroundColor: "#3A3B3F",
+                color: "#FFFFFF",
                 flexGrow: 1
               }} >
                 <Toolbar>

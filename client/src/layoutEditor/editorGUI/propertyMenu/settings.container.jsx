@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getCurrentTab, getViews } from '../../nav/nav.selectors';
-import { addView, saveViews, selectTab } from '../../nav/nav.actions';
-import ViewPropertyMenu from './viewPropertyMenu';
+import { getViews } from '../../../selectors/view';
+import { addView, saveViews } from '../../../storeActions/view';
+import Settings from './settings';
 
 
-class ViewPropertyMenuContainer extends Component {
+class SettingsContainer extends Component {
     constructor() {
         super();
         this.saveView = this.saveView.bind(this);
@@ -24,16 +24,15 @@ class ViewPropertyMenuContainer extends Component {
         this.props.saveViews(newViews);
       }
     render(){
-        return (<ViewPropertyMenu view={this.props.view} save={this.saveView} />)
+        return (<Settings view={this.props.view} save={this.saveView} />)
     }
 }
 const mapStateToPros = state => {
     const views = getViews(state);
-    const currentTab = getCurrentTab(state);
-    return { views, currentTab };
+    return { views };
   }
   
 const mapDispatchToProps = dispatch =>
-    bindActionCreators({ addView, saveViews, selectTab }, dispatch);
+    bindActionCreators({ addView, saveViews }, dispatch);
 
-export default connect(mapStateToPros, mapDispatchToProps)(ViewPropertyMenuContainer);
+export default connect(mapStateToPros, mapDispatchToProps)(SettingsContainer);

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { SwatchesPicker } from 'react-color';
 import {
   Box,
-  TextField,
   ExpansionPanel,
   ExpansionPanelDetails,
   ExpansionPanelSummary,
@@ -12,7 +11,7 @@ import {
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 
-class ViewPropertyMenu extends Component {
+class ThemeSettings extends Component {
   constructor() {
     super();
     this.handleChangeColor = this.handleChangeColor.bind(this);
@@ -27,22 +26,22 @@ class ViewPropertyMenu extends Component {
     this.props.save({ typography: { fontSize: value } });
   }
   render() {
-    return (<Box style={{ height: "500px" }}>
-    
-        <TextField label="Nome" fullWidth value="" onChange={evt => this.handleSave(evt.target.value)} />
+    const { changeColor, changeFont, changeFontColor, theme } = this.props;
+    return (<Box>
+    <Typography style={{ fontSize: 14, margin: 5, fontWeight: "bold" }} >{theme === "primary" ? "Primary" : "Secondary"}</Typography>
       <ExpansionPanel>
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon style={{ fontSize: "1.5rem" }} />}
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography style={{ fontSize: 14 }}>Theme Color Primary</Typography>
+          <Typography style={{ fontSize: 14 }}>Theme Color</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <SwatchesPicker
             width="100%"
             height={500}
-            onChangeComplete={(color) => this.handleChangeColor(color, "primary")} />
+            onChangeComplete={(color) => changeColor(color, theme)} />
         </ExpansionPanelDetails>
       </ExpansionPanel>
       <ExpansionPanel>
@@ -51,12 +50,12 @@ class ViewPropertyMenu extends Component {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography style={{ fontSize: 14 }}>Theme Color Secondary</Typography>
+        <Typography style={{ fontSize: 14 }}>Font Color</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <SwatchesPicker
             width="100%"
-            onChangeComplete={(color) => this.handleChangeColor(color, "secondary")} />
+            onChangeComplete={(color) =>  changeFontColor(color, theme)} />
         </ExpansionPanelDetails>
       </ExpansionPanel>
       <ExpansionPanel>
@@ -70,7 +69,7 @@ class ViewPropertyMenu extends Component {
         <ExpansionPanelDetails>
         <Slider
             defaultValue={12}
-            onChangeCommitted={this.handleChangeFont}
+            onChangeCommitted={(evt, value) => changeFont(evt, value)}
             aria-labelledby="discrete-slider"
             valueLabelDisplay="auto"
             step={1}
@@ -84,4 +83,4 @@ class ViewPropertyMenu extends Component {
   }
 }
 
-export default ViewPropertyMenu
+export default ThemeSettings

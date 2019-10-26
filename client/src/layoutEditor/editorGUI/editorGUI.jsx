@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { AppBar, Toolbar, IconButton, Typography, Container } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
+import { AppBar, Toolbar, Typography, Container } from '@material-ui/core';
 import ReactGridLayout from 'react-grid-layout';
 import "react-grid-layout/css/styles.css";
 import './style.css';
@@ -86,9 +85,6 @@ class EditorGUI extends Component {
            
              <AppBar color="primary" position="static">
               <Toolbar>
-              <IconButton edge="start" color="inherit" aria-label="menu">
-                  <MenuIcon />
-                </IconButton>
                 <Typography variant="h6" style={{ flexGrow: 1}}>
                   News
                 </Typography>

@@ -48,7 +48,8 @@ class ActionMenu extends Component {
     return (
       <div className={classes.root}>
         <AppBar style={{ 
-                backgroundColor: "#303f9f",
+                backgroundColor: "#3A3B3F",
+                color: "#FFFFFF",
                 font : 14
               }} position="static">
           <Toolbar>
