@@ -14,27 +14,30 @@ const initialState = {
   allIds: [],
   byIds: {},
   compId: 0,
-  components: ['textField', 'button', 'checkBox','select', 'iconButton'],
+  components: ['Inputs', 'textField',  'checkBox','select', 'Buttons', 'button', 'iconButton', "Resources", "camera", "map", "webview"],
   componentsRender: [],
   views: [{ id: 0, title: "view0",   componentId: 0, components: [], selectedComponent: {}}],
   currentTab: { id: 0, title: "view0",   componentId: 0, components: [], selectedComponent: {}},
   theme: {
     typography: {
       useNextVariants: true,
-      fontSize: 14
+      fontSize: 14,
+      color: "#FFFFFF"
     },
     palette: {
       primary: {
         light: '#757ce8',
         main: '#009be5',
         dark: '#002884',
-        contrastText: '#fff',
+        contrastText: '#FFFFFF',
+        textPrimary: '#FFFFFF'
       },
       secondary: {
         light: '#ff7961',
         main: '#f44336',
         dark: '#ba000d',
-        contrastText: '#000',
+        contrastText: '#FFFFFF',
+        textPrimary: '#FFFFFF'
       },
     }
   }

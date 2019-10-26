@@ -7,11 +7,13 @@ import {
   Typography,
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import AppSettingsContainer from './appSettings.container';
+import AppSettingsContainer from '../appMenu/appSettings.container';
 
 
 class ViewPropertyMenu extends Component {
   render() {
+    const { view } = this.props;
+    console.log(view.id)
     return (<Box style={{ height: "500px" }}>
      
       <ExpansionPanel>
@@ -26,7 +28,18 @@ class ViewPropertyMenu extends Component {
           <AppSettingsContainer />
       </ExpansionPanelDetails>
       </ExpansionPanel>
-
+      <ExpansionPanel>
+        <ExpansionPanelSummary
+          expandIcon={<ExpandMoreIcon style={{ fontSize: "1.5rem" }} />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography style={{ fontSize: 14 }} >View Settings</Typography>
+        </ExpansionPanelSummary>
+        <ExpansionPanelDetails>
+          <AppSettingsContainer />
+      </ExpansionPanelDetails>
+      </ExpansionPanel>
     </Box>)
   }
 }

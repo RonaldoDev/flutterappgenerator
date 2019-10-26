@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import PropertyMenu from './propertyMenuForm';
+import PropertyMenu from './propertyMenu';
 import { getComponentsToRender, getSelectedComponent } from '../editorGUI.selectors';
-import { getCurrentTab, getViews } from '../../nav/nav.selectors';
+import { getCurrentTab } from '../../nav/nav.selectors';
+import { getViews } from '../../../selectors/view';
 import { updateComponent, selectComponent } from '../editorGUI.actions';
 import { func, object } from 'prop-types';
 import { Box } from '@material-ui/core'
-import ViewPropertyMenuContainer from './viewPropertyMenu.container';
+import Settings from './settings.container';
 
 class PropertyMenuContainer extends Component {  
   handleUpdateComponents = (value) => {
@@ -49,7 +50,7 @@ class PropertyMenuContainer extends Component {
         </Box>);
     return (
       <Box className="prop-menu">
-        <ViewPropertyMenuContainer 
+        <Settings 
           view={views.filter(v => v.id === currentTab.id)[0]}
         />
       </Box>);

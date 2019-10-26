@@ -5,6 +5,8 @@
 /client/node_modules
 /.pnp
 .pnp.js
+client/yarn.lock/
+/client/src/config/firebase.js
 
 # testing
 /coverage
@@ -25,7 +27,7 @@ yarn-error.log*
 yarn.lock
 client/yarn-debug.log*
 client/yarn-error.log*
-client/yarn.lock
+
 
 # Created by https://www.gitignore.io/api/node,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=node,visualstudiocode

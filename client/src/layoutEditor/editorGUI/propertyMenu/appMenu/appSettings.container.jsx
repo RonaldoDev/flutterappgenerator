@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { changeTheme } from '../editorGUI.actions';
+import { changeTheme } from '../../editorGUI.actions';
 import AppSettings from './appSettings';
 
 

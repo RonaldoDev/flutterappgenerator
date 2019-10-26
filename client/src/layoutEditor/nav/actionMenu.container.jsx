@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getViews, getLastId } from './nav.selectors';
+import { getViews } from '../../selectors/view';
+import { getLastId } from './nav.selectors';
 import { arrayOf, object } from 'prop-types';
 // import { save } from './nav.actions';    
 import ActionMenu from './actionMenu';
