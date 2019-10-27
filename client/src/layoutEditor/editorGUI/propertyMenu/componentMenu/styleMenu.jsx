@@ -49,7 +49,7 @@ class StyleMenu extends Component {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography style={{ fontSize: 14 }}>Name</Typography>
+            <Typography style={{ fontSize: "1rem" }}>Name</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <TextField label="Nome" value={text} onChange={evt => this.onSetName(evt.target.value)} />
@@ -63,7 +63,7 @@ class StyleMenu extends Component {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography style={{ fontSize: 14 }}>Color</Typography>
+            <Typography style={{ fontSize: "1rem" }}>Color</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
 

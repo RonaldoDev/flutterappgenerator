@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getCurrentTab, getViews } from '../../../nav/nav.selectors';
-import { addView, saveViews, selectTab } from '../../../nav/nav.actions';
-import ViewPropertyMenu from '../viewPropertyMenu';
+import { getViews } from '../../../../selectors/view';
+import { getCurrentTab } from '../../../nav/nav.selectors';
+import { saveViews } from '../../../../storeActions/view';
+import ViewSettings from './viewSettings';
 
 
-class ViewPropertyMenuContainer extends Component {
+class ViewSettingsContainer extends Component {
     constructor() {
         super();
         this.saveView = this.saveView.bind(this);
@@ -24,7 +25,8 @@ class ViewPropertyMenuContainer extends Component {
         this.props.saveViews(newViews);
       }
     render(){
-        return (<ViewPropertyMenu view={this.props.view} save={this.saveView} />)
+      const { currentTab, views } = this.props;
+        return (<ViewSettings view={views.filter(v => v.id === currentTab.id)[0]} save={this.saveView} />)
     }
 }
 const mapStateToPros = state => {
@@ -34,6 +36,6 @@ const mapStateToPros = state => {
   }
   
 const mapDispatchToProps = dispatch =>
-    bindActionCreators({ addView, saveViews, selectTab }, dispatch);
+    bindActionCreators({ saveViews }, dispatch);
 
-export default connect(mapStateToPros, mapDispatchToProps)(ViewPropertyMenuContainer);
+export default connect(mapStateToPros, mapDispatchToProps)(ViewSettingsContainer);

@@ -16,8 +16,8 @@ const initialState = {
   compId: 0,
   components: ['Inputs', 'textField',  'checkBox','select', 'Buttons', 'button', 'iconButton', "Resources", "camera", "map", "webview"],
   componentsRender: [],
-  views: [{ id: 0, title: "view0",   componentId: 0, components: [], selectedComponent: {}}],
-  currentTab: { id: 0, title: "view0",   componentId: 0, components: [], selectedComponent: {}},
+  views: [{ id: 0, title: "view0", appName: "App Example",  componentId: 0, components: [], selectedComponent: {}}],
+  currentTab: { id: 0, title: "view0", appName: "App Example",   componentId: 0, components: [], selectedComponent: {}},
   theme: {
     typography: {
       useNextVariants: true,

@@ -47,7 +47,7 @@ class TabControl extends Component {
                 flexGrow: 1
               }} >
                 <Toolbar>
-                <Button style={{ fontSize: 14 }} color="inherit" onClick={() => addView()}>{i18n.t("add")}</Button>
+                <Button style={{ fontSize: "1rem" }} color="inherit" onClick={() => addView()}>{i18n.t("add")}</Button>
                     <Tabs 
                         value={currentTab.id} 
                         onChange={this.handleChange} 
