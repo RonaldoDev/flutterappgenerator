@@ -35,7 +35,7 @@ class ThemeSettings extends Component {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography style={{ fontSize: 14 }}>Theme Color</Typography>
+          <Typography style={{ fontSize: "1rem" }}>Theme Color</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <SwatchesPicker
@@ -50,7 +50,7 @@ class ThemeSettings extends Component {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-        <Typography style={{ fontSize: 14 }}>Font Color</Typography>
+        <Typography style={{ fontSize: "1rem" }}>Font Color</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <SwatchesPicker
@@ -64,7 +64,7 @@ class ThemeSettings extends Component {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography style={{ fontSize: 14 }}>Font Size</Typography>
+          <Typography style={{ fontSize: "1rem" }}>Font Size</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
         <Slider

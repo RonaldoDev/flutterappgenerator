@@ -76,7 +76,7 @@ class EditorGUI extends Component {
   }
     render() {
         
-        const { components } = this.props;
+        const { components, name } = this.props;
         const layout = components.map(item => item.layoutItem);
           return (
             <Container maxWidth="lg">
@@ -86,7 +86,7 @@ class EditorGUI extends Component {
              <AppBar color="primary" position="static">
               <Toolbar>
                 <Typography variant="h6" style={{ flexGrow: 1}}>
-                  News
+                  {name}
                 </Typography>
                 
               </Toolbar>

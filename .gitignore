@@ -6,7 +6,7 @@
 /.pnp
 .pnp.js
 client/yarn.lock/
-/client/src/config/firebase.js
+client/src/config/firebase.js
 
 # testing
 /coverage

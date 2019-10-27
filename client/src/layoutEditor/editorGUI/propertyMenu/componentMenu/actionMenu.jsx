@@ -49,7 +49,7 @@ class ActionMenu extends Component {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography style={{ fontSize: 14 }} >Method Actions</Typography>
+            <Typography style={{ fontSize: "1rem" }} >Method Actions</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
           <List component="nav">
@@ -71,7 +71,7 @@ class ActionMenu extends Component {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography style={{ fontSize: 14 }}>Validation Actions</Typography>
+            <Typography style={{ fontSize: "1rem" }}>Validation Actions</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <TextField label="Nome" value={text} onChange={evt => this.onSetName(evt.target.value)} />

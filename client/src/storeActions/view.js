@@ -1,4 +1,4 @@
-import { ADD_VIEW, SAVE_VIEWS } from "../reducers/actionTypes";
+import { ADD_VIEW, SAVE_VIEWS, CHANGE_THEME } from "../reducers/actionTypes";
 
 export const addView = content => ({
     type: ADD_VIEW,
@@ -9,6 +9,13 @@ export const addView = content => ({
 
 export const saveViews = content => ({
     type: SAVE_VIEWS,
+    payload: {
+        content
+    }
+});
+
+export const changeTheme = content => ({
+    type: CHANGE_THEME,
     payload: {
         content
     }

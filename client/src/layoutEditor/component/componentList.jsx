@@ -133,7 +133,7 @@ class ComponentList extends Component {
     return (
    
         <Box style={{ backgroundColor: "#FFFFFF", width: "100%" }}>
-          <List style={{ fontSize: 14 }} component="nav">
+          <List style={{ fontSize: "1rem" }} component="nav">
             {components.map((item, index) => this.renderListItems(item, index))}
          
           </List>

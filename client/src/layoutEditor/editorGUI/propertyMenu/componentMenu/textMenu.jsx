@@ -51,7 +51,7 @@ class TextMenu extends Component {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography style={{ fontSize: 14 }}>Component Description</Typography>
+            <Typography style={{ fontSize: "1rem" }}>Component Description</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <TextField label="Nome" fullWidth value={text} onChange={evt => this.onSetName(evt.target.value)} />
@@ -65,7 +65,7 @@ class TextMenu extends Component {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography style={{ fontSize: 14 }}>Text Color</Typography>
+            <Typography style={{ fontSize: "1rem" }}>Text Color</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
           <SwatchesPicker
@@ -80,7 +80,7 @@ class TextMenu extends Component {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography style={{ fontSize: 14 }}>Font-size</Typography>
+            <Typography style={{ fontSize: "1rem" }}>Font-size</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
           {/* <InputLabel htmlFor={id}></InputLabel> */}

@@ -10,6 +10,7 @@ import { arrayOf, func, object } from 'prop-types';
 import { getTheme } from '../../reducers/selectors';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
+import { getCurrentTab } from '../nav/nav.selectors';
 
 class EditorGUIContainer extends Component {
   constructor() {
@@ -28,7 +29,7 @@ class EditorGUIContainer extends Component {
   }
 
   render() {
-    const { componentList, theme } = this.props;
+    const { componentList, currentTab, theme } = this.props;
     const muiTheme = createMuiTheme({
       typography: theme.typography,
       palette: theme.palette
@@ -40,7 +41,9 @@ class EditorGUIContainer extends Component {
             <EditorGUI
               components={componentList}
               updateComponent={this.handleUpdateComponents}
-              selectComponent={this.handleSelectComponent} />
+              selectComponent={this.handleSelectComponent} 
+              name={currentTab.id === 0 ? currentTab.appName : currentTab.title}  
+            />
           </ThemeProvider>
         </Grid>
         <Grid item xs={6}>
@@ -58,8 +61,9 @@ EditorGUIContainer.propTypes = {
 
 const mapStateToPros = state => {
   const componentList = getComponentsToRender(state);
-  const theme = getTheme(state)
-  return { componentList, theme };
+  const theme = getTheme(state);
+  const currentTab = getCurrentTab(state);
+  return { componentList, theme, currentTab };
 }
 
 const mapDispatchToProps = dispatch =>

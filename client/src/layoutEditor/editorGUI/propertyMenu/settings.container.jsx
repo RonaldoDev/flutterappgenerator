@@ -7,24 +7,8 @@ import Settings from './settings';
 
 
 class SettingsContainer extends Component {
-    constructor() {
-        super();
-        this.saveView = this.saveView.bind(this);
-    }
-    saveView = (p_view) => {
-        const newViews = this.props.views.reduce((total, view) => {
-          if (view.id === p_view.id) {
-            total.push(p_view);
-            return total;
-          }
-          total.push(view);
-          return total;
-        }, []);
-        
-        this.props.saveViews(newViews);
-      }
     render(){
-        return (<Settings view={this.props.view} save={this.saveView} />)
+        return (<Settings view={this.props.view} />)
     }
 }
 const mapStateToPros = state => {
