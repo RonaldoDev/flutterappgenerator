@@ -7,7 +7,7 @@ import { arrayOf, func, number, object, string } from 'prop-types';
 import renderButton from '../component/components/button';
 import renderCheckbox from '../component/components/checkbox';
 import renderTextField from '../component/components/inputText';
-import renderAppBar from '../component/components/appbar';
+import renderText from '../component/components/text';
 import renderSelect from '../component/components/select';
 import renderIconButton from '../component/components/iconButton';
 
@@ -60,8 +60,8 @@ class EditorGUI extends Component {
         return renderTextField({ item, selectItem: this.selectItem });
       case 'checkBox':
         return renderCheckbox({ item, selectItem: this.selectItem });
-      case 'appbar':
-        return renderAppBar({ item, selectItem: this.selectItem });
+      case 'text':
+        return renderText({ item, selectItem: this.selectItem });
       case 'select':
         return renderSelect({ item, selectItem: this.selectItem });
       default:

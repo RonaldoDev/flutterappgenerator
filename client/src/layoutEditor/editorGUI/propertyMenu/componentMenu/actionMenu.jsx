@@ -49,7 +49,7 @@ class ActionMenu extends Component {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography style={{ fontSize: "1rem" }} >Method Actions</Typography>
+            <Typography style={{ fontSize: "1rem" }} >Navigate into</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
           <List component="nav">

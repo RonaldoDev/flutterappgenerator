@@ -10,11 +10,13 @@ import {
   CHANGE_THEME
 } from "./actionTypes";
 
+import { componentsList } from '../config/initialStore';
+
 const initialState = {
   allIds: [],
   byIds: {},
   compId: 0,
-  components: ['Inputs', 'textField',  'checkBox','select', 'Buttons', 'button', 'iconButton', "Resources", "camera", "map", "webview"],
+  components: componentsList,
   componentsRender: [],
   views: [{ id: 0, title: "view0", appName: "App Example",  componentId: 0, components: [], selectedComponent: {}}],
   currentTab: { id: 0, title: "view0", appName: "App Example",   componentId: 0, components: [], selectedComponent: {}},
