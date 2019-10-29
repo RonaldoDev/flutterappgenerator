@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { SwatchesPicker } from 'react-color';
 import {
-  MenuItem,
-  Select,
+  Slider,
   TextField,
   ExpansionPanel,
   ExpansionPanelDetails,
@@ -14,12 +13,9 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 class TextMenu extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-        fontSize: 12
-    }
     this.send = this.send.bind(this);
     this.handleChangeColor = this.handleChangeColor.bind(this);
-    this.handleChangeFontSize = this.handleChangeFontSize.bind(this);
+    this.handleChangeFont = this.handleChangeFont.bind(this);
   }
   componentWillReceiveProps(props) {
     this.setState({ fontSize: props.component.fontSize });
@@ -31,12 +27,13 @@ class TextMenu extends Component {
     this.send({ text: value });
   }
   handleChangeColor(color) {
-
+    this.send({ theme: "custom" });
     this.send({ textColor: color.hex });
   }
-  handleChangeFontSize(event) {
-    this.setState({ fontSize: event.target.value });
-    this.send({ fontSize: event.target.value });
+
+  handleChangeFont(_, value) {
+    this.send({ theme: "custom" });
+    this.send({ fontSize: value });
   }
 
   render() {
@@ -84,25 +81,16 @@ class TextMenu extends Component {
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
           {/* <InputLabel htmlFor={id}></InputLabel> */}
-                <Select
-                    fullWidth
-                    value={this.state.fontSize}
-                    onChange={evt => this.handleChangeFontSize(evt)}
-                    inputProps={{
-                    name: "fontSize",
-                    }}
-                >
-                    <MenuItem value={7}>7</MenuItem>
-                    <MenuItem value={8}>8</MenuItem>
-                    <MenuItem value={9}>9</MenuItem>
-                    <MenuItem value={10}>10</MenuItem>
-                    <MenuItem value={11}>11</MenuItem>
-                    <MenuItem value={12}>12</MenuItem>
-                    <MenuItem value={13}>13</MenuItem>
-                    <MenuItem value={14}>14</MenuItem>
-                    <MenuItem value={15}>15</MenuItem>
-                    <MenuItem value={16}>16</MenuItem>
-                </Select>
+            <Slider
+              defaultValue={12}
+              onChangeCommitted={(evt, value) => this.handleChangeFont(evt, value)}
+              aria-labelledby="discrete-slider"
+              valueLabelDisplay="auto"
+              step={1}
+              // marks
+              min={8}
+              max={24}
+            />
           </ExpansionPanelDetails>
         </ExpansionPanel>
       </div>

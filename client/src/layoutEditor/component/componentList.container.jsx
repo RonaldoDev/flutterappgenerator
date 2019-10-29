@@ -11,7 +11,7 @@ import getComponent, { widget } from './components/components';
 class ComponentListContainer extends Component {
     handleAddComponent = (componentType) => {
         const { lastId  } = this.props;
-        
+        const icon = componentType === "camera" ? "camera_alt" : componentType === "map" ? "map" : "http"
         const component = getComponent(lastId, componentType);
         const comp = { 
             layoutItem : component,

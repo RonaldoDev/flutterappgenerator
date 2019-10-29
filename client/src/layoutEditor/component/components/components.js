@@ -5,6 +5,8 @@ export default (id, item) => {
             return { i: `${++id}`, x: 0, y: 1, w: 4, h: 1, isResizable: false}
         case 'textField':
             return { i: `${++id}`, x: 0, y: 1, w: 4, h: 1, minW: 2, maxW: 4, maxH: 1, minH: 1}
+        case 'text':
+            return { i: `${++id}`, x: 0, y: 1, w: 2, h: 1, minW: 2, maxW: 4, maxH: 1, minH: 1}
         case 'button':
             return { i: `${++id}`, x: 0, y: 1, w: 2, h: 1, minW: 2, maxW: 4, maxH: 1}
         case 'iconButton':
@@ -21,6 +23,7 @@ export default (id, item) => {
 export const widget = (id, componentType, icon=null) => ({
     color: "primary",
     text: "default",
+    theme: "primary",
     textColor: "black",
     fontSize: 12,
     cssClass: "",

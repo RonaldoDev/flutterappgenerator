@@ -8,7 +8,7 @@ export default function RenderIconButton(props) {
   return (
           <div key={id} className={selected ? " selected" : ""} onClick={() => selectItem(id)}>
             <Icon fontSize="large" color="primary">
-                {icon}
+                camera_alt
             </Icon>
           </div>);
 } 

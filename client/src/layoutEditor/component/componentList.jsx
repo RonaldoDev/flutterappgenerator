@@ -29,6 +29,16 @@ class ComponentList extends Component {
 
   renderListItems(item, index) {
     switch (item) {
+      case "text":
+          return (<ListItem style={{ width: "100%" }} key="0" button onClick={() => this.handleAddComponent("text")}>
+                     <Button
+                      variant="contained"
+                      color="default"
+                      style={{ backgroundColor: "#FFFFFF", width: "100%", fontSize: 12}}
+                    >
+                      Text
+                    </Button>
+                </ListItem>);
       case "button":
         return (<ListItem style={{ width: "100%" }} key="1" button onClick={() => this.handleAddComponent("button")}>
                    <Button
@@ -42,7 +52,7 @@ class ComponentList extends Component {
 
       case "textField":
         return (
-          <ListItem style={{ width: "100%" }} key="2" button onClick={() => this.handleAddComponent("button")}>
+          <ListItem style={{ width: "100%" }} key="2" button onClick={() => this.handleAddComponent("textField")}>
             <img src="imgs/textField.png" alt="Text Field" style={{ maxWidth: "100%", height: "auto" }} />
           </ListItem>);
       case "checkBox":
