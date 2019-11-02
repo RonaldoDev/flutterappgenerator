@@ -21,7 +21,6 @@ class EditorGUI extends Component {
       todos: {}
     }
     this.onLayoutChange = this.onLayoutChange.bind(this);
-    this.fetchTodos = this.fetchTodos.bind(this)
 }
    onLayoutChange = (layout) => {
     const { components, updateComponent } = this.props
@@ -68,12 +67,6 @@ class EditorGUI extends Component {
         return null;
     }
   };
- async fetchTodos () {
-    this.setState({ isLoading: true })
-
-    const resp = await fetch('v1/generate');
-    console.log(resp.json())
-  }
     render() {
         
         const { components, name } = this.props;
