@@ -1,0 +1,17 @@
+FROM node:11.2.0 as react-build
+
+RUN mkdir -p /srv/app/client
+WORKDIR /srv/app/client
+COPY package.json /srv/app/client
+RUN npm install
+
+COPY . /srv/app/client
+RUN npm run build
+
+FROM nginx:1.17.5
+
+COPY default.conf.template /etc/nginx/conf.d/default.conf.template
+COPY nginx.conf /etc/nginx/nginx.conf
+
+COPY --from=react-build /srv/app/client/build /usr/share/nginx/html
+CMD /bin/bash -c "envsubst '\$PORT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf" && nginx -g 'daemon off;'
