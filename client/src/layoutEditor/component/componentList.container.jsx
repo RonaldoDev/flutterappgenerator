@@ -1,18 +1,19 @@
+import { arrayOf, func, number, string } from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getComponentList, getTheme } from '../../reducers/selectors';
+import { getPositionsToRenders } from '../editorGUI/editorGUI.selectors';
 import { getLastId } from '../nav/nav.selectors';
-import { addComponent } from './components.actions';    
 import ComponentList from './componentList';
-import { arrayOf, func, number, string } from 'prop-types';
+import { addComponent } from './components.actions';
 import getComponent, { widget } from './components/components';
 
 class ComponentListContainer extends Component {
     handleAddComponent = (componentType) => {
-        const { lastId  } = this.props;
+        const { lastId, positionsToRender  } = this.props;
         const icon = componentType === "camera" ? "camera_alt" : componentType === "map" ? "map" : "http"
-        const component = getComponent(lastId, componentType);
+        const component = getComponent(lastId, componentType, positionsToRender[0]);
         const comp = { 
             layoutItem : component,
             id: component.i,
@@ -35,11 +36,12 @@ ComponentListContainer.propTypes = {
 }
 
 const mapStateToPros = state => {
+    const positionsToRender = getPositionsToRenders(state);
     const componentList = getComponentList(state);
     const compId = getLastId(state);
     const theme = getTheme(state);
 
-    return { componentList, lastId: compId, theme };
+    return { positionsToRender, componentList, lastId: compId, theme };
 }
 
 const mapDispatchToProps = dispatch => 
