@@ -21,14 +21,14 @@ export default (id, item, position) => {
     }
 }
 
-export const widget = (id, componentType, icon=null) => ({
+export const widget = (id, componentType) => ({
     color: "primary",
     text: "default",
     theme: "primary",
     textColor: "black",
     fontSize: 12,
     cssClass: "",
-    icon: icon,
+    icon: "add",
     id: id,
     hasAction: componentType === "button",
     action: { type: "", value: "" },
