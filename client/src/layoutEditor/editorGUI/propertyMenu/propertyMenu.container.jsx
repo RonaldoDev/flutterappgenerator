@@ -31,7 +31,6 @@ class PropertyMenuContainer extends Component {
     }
     const componentPositions = components.reduce((edited_components, comp) => {
       if(comp.id === component.id) {
-        debugger;
         comp.widget[Object.keys(value)[0]] = Object.values(value)[0];
       }
       edited_components.push(comp);

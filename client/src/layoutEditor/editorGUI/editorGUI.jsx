@@ -10,10 +10,11 @@ import renderTextField from '../component/components/inputText';
 import renderText from '../component/components/text';
 import renderSelect from '../component/components/select';
 import renderIconButton from '../component/components/iconButton';
+import renderResource from '../component/components/resource';
 
 
 class EditorGUI extends Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
       selected: false,
@@ -21,13 +22,13 @@ class EditorGUI extends Component {
       todos: {}
     }
     this.onLayoutChange = this.onLayoutChange.bind(this);
-}
-   onLayoutChange = (layout) => {
+  }
+  onLayoutChange = (layout) => {
     const { components, updateComponent } = this.props
     const componentPositions = components.reduce((layouts, component) => {
       layout.forEach(item => {
         if (component.id === item.i) {
-          layouts.push({...component, layoutItem: item});
+          layouts.push({ ...component, layoutItem: item });
         }
       })
       return layouts;
@@ -37,7 +38,7 @@ class EditorGUI extends Component {
 
   selectItem = (id) => {
     const { components, selectComponent } = this.props;
-    
+
     components.forEach(comp => {
       if (comp.id === id) {
         comp.selected = true;
@@ -45,12 +46,12 @@ class EditorGUI extends Component {
       }
       else
         comp.selected = false;
-     });
-     this.setState({ isSelected: true })
+    });
+    this.setState({ isSelected: true })
   }
   renderItems(item) {
-    
-    switch(item.type) {
+
+    switch (item.type) {
       case 'button':
         return renderButton({ item, selectItem: this.selectItem });
       case 'iconButton':
@@ -64,44 +65,44 @@ class EditorGUI extends Component {
       case 'select':
         return renderSelect({ item, selectItem: this.selectItem });
       default:
-        return null;
+        return renderResource({ item, selectItem: this.selectItem });
     }
   };
-    render() {
-        
-        const { components, name } = this.props;
-        const layout = components.map(item => item.layoutItem);
-          return (
-            <Container maxWidth="lg">
-            <div className="phone">
-             <div className="screen">
-           
-             <AppBar color="primary" position="static">
+  render() {
+
+    const { components, name } = this.props;
+    const layout = components.map(item => item.layoutItem);
+    return (
+      <Container maxWidth="lg">
+        <div className="phone">
+          <div className="screen">
+
+            <AppBar color="primary" position="static">
               <Toolbar>
-                <Typography variant="h6" style={{ flexGrow: 1}}>
+                <Typography variant="h6" style={{ flexGrow: 1 }}>
                   {name}
                 </Typography>
-                
+
               </Toolbar>
-            </AppBar>      
-                <ReactGridLayout cols={4}
-                            onLayoutChange={this.onLayoutChange}
-                            rowHeight={40}
-                            width={340}
-                            static={false}
-                            isDraggable={true}
-                            useCSSTransforms
-                            compactType={null}
-                            preventCollision={true}
-                            isResizable={true}
-                            className="layout" maxRows={10} layout={layout} >
-                {components.map(item => this.renderItems(item))}
-                </ReactGridLayout>
-             </div>
-             </div>
-             </Container>
-          )
-    }
+            </AppBar>
+            <ReactGridLayout cols={4}
+              onLayoutChange={this.onLayoutChange}
+              rowHeight={40}
+              width={340}
+              static={false}
+              isDraggable={true}
+              useCSSTransforms
+              compactType={null}
+              preventCollision={true}
+              isResizable={true}
+              className="layout" maxRows={10} layout={layout} >
+              {components.map(item => this.renderItems(item))}
+            </ReactGridLayout>
+          </div>
+        </div>
+      </Container>
+    )
+  }
 }
 
 EditorGUI.defaultProps = {

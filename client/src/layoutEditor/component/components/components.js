@@ -5,13 +5,9 @@ export default (id, item, position) => {
         case 'checkBox':
             return { i: `${id_axis}`, x: 0, y: position, w: 4, h: 1, isResizable: false}
         case 'textField':
-<<<<<<< Updated upstream
-            return { i: `${++id}`, x: 0, y: 1, w: 4, h: 1, minW: 2, maxW: 4, maxH: 1, minH: 1}
-        case 'text':
-            return { i: `${++id}`, x: 0, y: 1, w: 2, h: 1, minW: 2, maxW: 4, maxH: 1, minH: 1}
-=======
             return { i: `${id_axis}`, x: 0, y: position, w: 4, h: 1, minW: 2, maxW: 4, maxH: 1, minH: 1}
->>>>>>> Stashed changes
+        case 'text':
+            return { i: `${id_axis}`, x: 0, y: position, w: 4, h: 1, minW: 2, maxW: 4, maxH: 1, minH: 1}
         case 'button':
             return { i: `${id_axis}`, x: 0, y: position, w: 2, h: 1, minW: 2, maxW: 4, maxH: 1}
         case 'iconButton':
@@ -21,7 +17,7 @@ export default (id, item, position) => {
         case 'select':
             return { i: `${id_axis}`, x: 0, y: position, w: 4, h: 1, isResizable: false }
         default:
-            return { i: `${id_axis}` };
+            return { i: `${id_axis}`, x: 0, y: position, w: 4, h: 10, static: true };
     }
 }
 
@@ -35,6 +31,13 @@ export const widget = (id, componentType, icon=null) => ({
     icon: icon,
     id: id,
     hasAction: componentType === "button",
-    action: { type: "", value: "" }
-    
+    action: { type: "", value: "" },
+    type: componentType,
+    items: [
+        { key: 1, label: "one" },
+        { key: 2, label: "two" },
+        { key: 3, label: "three" }
+    ],
+    keyboardType: "Alphabetical",
+    website: ""
 });
