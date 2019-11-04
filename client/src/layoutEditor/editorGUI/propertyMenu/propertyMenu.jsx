@@ -67,7 +67,7 @@ export default function SimpleTabs(props) {
         <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
           <Tab label="Text" {...a11yProps(0)} />
           <Tab label="Style" {...a11yProps(1)} />
-          <Tab label="Actions" {...a11yProps(2)} />
+          { ['button', 'iconButton', 'webview', 'select', 'textField'].includes(component.type) && <Tab label="Actions" {...a11yProps(2)} />}
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>

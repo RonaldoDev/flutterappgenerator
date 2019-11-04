@@ -10,7 +10,7 @@ import {
   CHANGE_THEME
 } from "./actionTypes";
 
-import { componentsList } from '../config/initialStore';
+import { componentsList, firstView, theme } from '../config/initialStore';
 
 const initialState = {
   allIds: [],
@@ -18,32 +18,9 @@ const initialState = {
   compId: 0,
   components: componentsList,
   componentsRender: [],
-  views: [{ id: 0, title: "view0", appName: "App Example",  componentId: 0, components: [], selectedComponent: {}}],
-  currentTab: { id: 0, title: "view0", appName: "App Example",   componentId: 0, components: [], selectedComponent: {}},
-  theme: {
-    typography: {
-      useNextVariants: true,
-      fontSize: 14,
-      color: "#FFFFFF"
-    },
-    palette: {
-      primary: {
-        light: '#757ce8',
-        main: '#009be5',
-        dark: '#002884',
-        contrastText: '#FFFFFF',
-        textPrimary: '#FFFFFF'
-      },
-      secondary: {
-        light: '#ff7961',
-        main: '#f44336',
-        dark: '#ba000d',
-        contrastText: '#FFFFFF',
-        textPrimary: '#FFFFFF'
-      },
-    }
-  }
-
+  views: [firstView],
+  currentTab: firstView,
+  theme: theme
 };
 
 export default function(state = initialState, action) {

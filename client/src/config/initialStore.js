@@ -5,11 +5,44 @@ const buttons = ['button', 'íconButton'];
 const resources = ['camera', 'map', 'webview'];
 
 export const componentsList = [
-    'Data Displays',
-    ...dataDisplays,
-    'Inputs',
-    ...inputs,
-    'Buttons',
-    ...buttons,
-    'Resources',
-    ...resources];
+  'Data Displays',
+  ...dataDisplays,
+  'Inputs',
+  ...inputs,
+  'Buttons',
+  ...buttons,
+  'Resources',
+  ...resources];
+
+export const firstView = {
+  id: 0,
+  title: "view0",
+  appName: "App Example",
+  componentId: 0,
+  components: [],
+  selectedComponent: {}
+};
+
+export const theme = {
+  typography: {
+    useNextVariants: true,
+    fontSize: 14,
+    color: "#FFFFFF"
+  },
+  palette: {
+    primary: {
+      light: '#757ce8',
+      main: '#009be5',
+      dark: '#002884',
+      contrastText: '#FFFFFF',
+      textPrimary: '#FFFFFF'
+    },
+    secondary: {
+      light: '#ff7961',
+      main: '#f44336',
+      dark: '#ba000d',
+      contrastText: '#FFFFFF',
+      textPrimary: '#FFFFFF'
+    },
+  }
+};    

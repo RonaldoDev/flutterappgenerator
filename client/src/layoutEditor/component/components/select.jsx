@@ -5,7 +5,7 @@ import { Select, MenuItem, FormControl, InputLabel } from '@material-ui/core';
 export default function RenderSelect(props) {
   const { item, selectItem } = props
   const { widget, id, selected } = item;
-  const { text } = widget;
+  const { text, items } = widget;
         return (
           <div key={id} className={selected ? " selected" : ""} onClick={() => selectItem(id)}>
              <FormControl style={{width:'100%'}} >
@@ -17,9 +17,8 @@ export default function RenderSelect(props) {
                         id: id,
                         }}
                     >
-                        <MenuItem value={10}>Ten</MenuItem>
-                        <MenuItem value={20}>Twenty</MenuItem>
-                        <MenuItem value={30}>Thirty</MenuItem>
+                      {items.map((elem) => <MenuItem value={elem.key}>{elem.label}</MenuItem>)}
+                        
                     </Select>
                 </FormControl>
           </div>);
