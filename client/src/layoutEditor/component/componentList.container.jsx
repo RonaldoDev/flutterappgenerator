@@ -37,7 +37,7 @@ class ComponentListContainer extends Component {
         id: component.i,
         type: componentType,
         selected: false,
-        widget: widget(component.i, componentType, "add")
+        widget: widget(component.i, componentType)
       };
       this.props.addComponent(comp);
     }
@@ -51,7 +51,7 @@ class ComponentListContainer extends Component {
       <Box>
         <Snackbar
           anchorOrigin={{
-            vertical: 'center',
+            vertical: 'top',
             horizontal: 'center',
           }}
           open={this.state.layoutFull}

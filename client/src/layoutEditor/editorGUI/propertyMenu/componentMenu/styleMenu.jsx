@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import { SwatchesPicker } from 'react-color';
 import {
+  Button,
   TextField,
   ExpansionPanel,
   ExpansionPanelDetails,
   ExpansionPanelSummary,
   FormControlLabel,
   Typography,
+  Grid,
   ListItem,
   ListItemText,
-  Radio
+  Radio,
+  Icon
 
 } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -18,8 +21,13 @@ class StyleMenu extends Component {
   constructor() {
     super();
     this.send = this.send.bind(this);
+    this.state = {
+      iconName: ""
+    }
     this.handleChangeColor = this.handleChangeColor.bind(this);
     this.handleChangeTheme = this.handleChangeTheme.bind(this);
+    this.handleOnChange = this.handleOnChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   send(obj) {
     this.props.handleUpdateComponents(obj);
@@ -37,9 +45,16 @@ class StyleMenu extends Component {
   renderListItems(item, index) {
     return (
       <ListItem key={`${item}${index}`} button onClick={this.handleAddAction}>
-        <ListItemText primaryTypographyProps={{ style: { fontSize: 14 }}} primary={`navigate: ${item}`}/>
+        <ListItemText primaryTypographyProps={{ style: { fontSize: 14 } }} primary={`navigate: ${item}`} />
       </ListItem>
     );
+  }
+  handleOnChange(evt) {
+    this.setState({ iconName: evt.target.value })
+  }
+  handleSubmit(event) {
+    this.send({ icon: this.state.iconName });
+    event.preventDefault();
   }
 
   render() {
@@ -63,59 +78,59 @@ class StyleMenu extends Component {
 
         <ExpansionPanel>
           <ExpansionPanelSummary
-            expandIcon={<ExpandMoreIcon style={{ fontSize : "1.5rem"  }} />}
+            expandIcon={<ExpandMoreIcon style={{ fontSize: "1.5rem" }} />}
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
             <Typography style={{ fontSize: "1rem" }}>Theme</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-          <FormControlLabel
-            value="start"
-            control={<Radio
-              checked={theme === 'primary'}
-              onChange={this.handleChangeTheme}
-              color="default"
-              value="primary"
-              name="radio-button-demo"
-              inputProps={{ 'aria-label': 'Primary' }}
-            />}
-            label="Primary"
-            labelPlacement="start"
-          />
-          <FormControlLabel
-            value="start"
-            control={ <Radio
-              checked={theme === 'secondary'}
-              color="default"
-              onChange={this.handleChangeTheme}
-              value="secondary"
-              name="radio-button-demo"
-              inputProps={{ 'aria-label': 'Secondary' }}
-            />}
-            label="Secondary"
-            labelPlacement="start"
-          />
-          <FormControlLabel
-            value="start"
-            control={ <Radio
-              checked={theme === 'custom'}
-              color="default"
-              onChange={this.handleChangeTheme}
-              value="custom"
-              name="radio-button-demo"
-              inputProps={{ 'aria-label': 'Custom' }}
-            />}
-            label="Custom"
-            labelPlacement="start"
-          /> 
-           
-           
+            <FormControlLabel
+              value="start"
+              control={<Radio
+                checked={theme === 'primary'}
+                onChange={this.handleChangeTheme}
+                color="default"
+                value="primary"
+                name="radio-button-demo"
+                inputProps={{ 'aria-label': 'Primary' }}
+              />}
+              label="Primary"
+              labelPlacement="start"
+            />
+            <FormControlLabel
+              value="start"
+              control={<Radio
+                checked={theme === 'secondary'}
+                color="default"
+                onChange={this.handleChangeTheme}
+                value="secondary"
+                name="radio-button-demo"
+                inputProps={{ 'aria-label': 'Secondary' }}
+              />}
+              label="Secondary"
+              labelPlacement="start"
+            />
+            <FormControlLabel
+              value="start"
+              control={<Radio
+                checked={theme === 'custom'}
+                color="default"
+                onChange={this.handleChangeTheme}
+                value="custom"
+                name="radio-button-demo"
+                inputProps={{ 'aria-label': 'Custom' }}
+              />}
+              label="Custom"
+              labelPlacement="start"
+            />
+
+
           </ExpansionPanelDetails>
         </ExpansionPanel>
         <ExpansionPanel>
           <ExpansionPanelSummary
-            expandIcon={<ExpandMoreIcon style={{ fontSize : "1.5rem"  }} />}
+            expandIcon={<ExpandMoreIcon style={{ fontSize: "1.5rem" }} />}
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
@@ -123,13 +138,43 @@ class StyleMenu extends Component {
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
 
-          <SwatchesPicker
-            width="100%"
-            color="#00BCD4"
-            height={500}
-            onChangeComplete={this.handleChangeColor} />
+            <SwatchesPicker
+              width="100%"
+              color="#00BCD4"
+              height={500}
+              onChangeComplete={this.handleChangeColor} />
           </ExpansionPanelDetails>
         </ExpansionPanel>
+        {component.type === 'iconButton' &&
+          <ExpansionPanel>
+            <ExpansionPanelSummary
+              expandIcon={<ExpandMoreIcon style={{ fontSize: "1.5rem" }} />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
+              <Typography style={{ fontSize: "1rem" }}>Icon</Typography>
+            </ExpansionPanelSummary>
+            <ExpansionPanelDetails>
+              <Grid container>
+                <Grid item xs={6}>
+                  <form onSubmit={this.handleSubmit} >
+                    <TextField label="Select item name" placeholder="Set item" onChange={evt => this.handleOnChange(evt)} />
+                    <Button type="submit">Change Icon</Button>
+                  </form>
+                </Grid>
+                <Grid item xs={6}>
+                  <Typography style={{ fontSize: "1rem" }}>Icon Preview</Typography>
+                  <Icon fontSize="large">
+                    {this.state.iconName}
+                  </Icon>
+                </Grid>
+
+              </Grid>
+
+
+            </ExpansionPanelDetails>
+          </ExpansionPanel>
+        }
       </div>
 
     )

@@ -1,7 +1,7 @@
 
 const dataDisplays = ['text'];
 const inputs = ['textField', 'checkBox', 'select'];
-const buttons = ['button', 'íconButton'];
+const buttons = ['button', 'iconButton'];
 const resources = ['camera', 'map', 'webview'];
 
 export const componentsList = [
