@@ -14,10 +14,12 @@ import {
   Select,
   MenuItem,
   FormControl,
-  InputLabel
+  InputLabel,
+  Grid
 
 } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import i18n from 'i18next';
 
 class ActionMenu extends Component {
   constructor() {
@@ -48,10 +50,10 @@ class ActionMenu extends Component {
   }
 
   handleChangeKeyboad(evt) {
-    this.send({ keyboardType: evt.target.value }) 
+    this.send({ keyboardType: evt.target.value })
   }
   handleChange(value) {
-    this.setState({value: value});
+    this.setState({ selectValue: value });
   }
   handleSubmit(event) {
     const { items } = this.props.component;
@@ -62,8 +64,8 @@ class ActionMenu extends Component {
   handleDelete(item) {
     const { items } = this.props.component;
     let filteredItems = items.filter(f => f.key !== item.key);
-    filteredItems.forEach((elem, index) => elem.key = index );
-    this.send({ items: filteredItems }) 
+    filteredItems.forEach((elem, index) => elem.key = index);
+    this.send({ items: filteredItems })
   }
 
   renderListItems(item, index) {
@@ -82,13 +84,13 @@ class ActionMenu extends Component {
         aria-controls="panel1a-content"
         id="panel1a-header"
       >
-        <Typography style={{ fontSize: "1rem" }} >Navigate into</Typography>
+        <Typography style={{ fontSize: "1rem" }} >{`${i18n.t("navigate")} ${i18n.t("into")}`}</Typography>
       </ExpansionPanelSummary>
       <ExpansionPanelDetails>
-        {component.type === 'webview' && <TextField label="Webview URL" placeholder="http://example.com" onChange={evt => this.onSetName(evt.target.value)} />}
+        {component.type === 'webview' && <TextField label={i18n.t("webview-url")} placeholder={i18n.t("http-example")} onChange={evt => this.onSetName(evt.target.value)} />}
         {['button', 'iconButton'].includes(component.type) &&
           <List component="nav">
-            {views.length ? views.map((view, index) => this.renderListItems(view, index)) : "No Actions"}
+            {views.length ? views.map((view, index) => this.renderListItems(view, index)) : i18n.t("no-actions")}
           </List>}
 
       </ExpansionPanelDetails>
@@ -102,25 +104,25 @@ class ActionMenu extends Component {
         aria-controls="panel1a-content"
         id="panel1a-header"
       >
-        <Typography style={{ fontSize: "1rem" }}>Validation Actions</Typography>
+        <Typography style={{ fontSize: "1rem" }}>{i18n.t("validation-actions")}</Typography>
       </ExpansionPanelSummary>
       <ExpansionPanelDetails>
-      <FormControl style={{width:'100%'}} >
-                <InputLabel htmlFor="id">Keyboard type</InputLabel>
+        <FormControl style={{ width: '100%' }} >
+          <InputLabel htmlFor="id">{i18n.t("keyboard-type")}</InputLabel>
           <Select
-              style={{width:'100%'}}
-              inputProps={{
+            style={{ width: '100%' }}
+            inputProps={{
               name: "Keyboard type",
               id: "id"
-              }}
-              defaultValue={keyboard}
-              onChange={this.handleChangeKeyboad}
+            }}
+            defaultValue={keyboard}
+            onChange={this.handleChangeKeyboad}
           >
-            <MenuItem value="Alphabetical" >Alphabetical</MenuItem>
-            <MenuItem value="Just Numbers" >Just Numbers</MenuItem>
-              
+            <MenuItem value="Alphabetical" >{i18n.t("alphabetical")}</MenuItem>
+            <MenuItem value="Just Numbers" >{i18n.t("just-numbers")}</MenuItem>
+
           </Select>
-          </FormControl>
+        </FormControl>
       </ExpansionPanelDetails>
     </ExpansionPanel>)
   }
@@ -132,22 +134,33 @@ class ActionMenu extends Component {
         aria-controls="panel1a-content"
         id="panel1a-header"
       >
-        <Typography style={{ fontSize: "1rem" }}>Control Actions</Typography>
+        <Typography style={{ fontSize: "1rem" }}>{i18n.t("control-actions")}</Typography>
       </ExpansionPanelSummary>
       <ExpansionPanelDetails>
-        <form onSubmit={this.handleSubmit} >
-          <TextField label="Select item name" placeholder="Set item" onChange={evt => this.handleChange(evt.target.value)} />
-          <Button type="submit"> Add </Button>    
-        </form>
-        <Paper >
-          {items.map(item => 
-              <Chip
-                key={item.key}
-                label={item.label}
-                onDelete={() => this.handleDelete(item)}
-              />
-          )}
-        </Paper>
+        <Grid container>
+          <Grid item xs={12}>
+          <Paper >
+              {items.map(item =>
+                <Chip
+                  key={item.key}
+                  label={item.label}
+                  onDelete={() => this.handleDelete(item)}
+                />
+              )}
+            </Paper>
+            
+          </Grid>
+          <Grid item xs={12}>
+          <form onSubmit={this.handleSubmit} >
+              <TextField label={i18n.t("item-name")} placeholder={i18n.t("set-item-name")} onChange={evt => this.handleChange(evt.target.value)} />
+              <Button type="submit"> {i18n.t("add")} </Button>
+            </form>
+          </Grid>
+
+        </Grid>
+
+
+
       </ExpansionPanelDetails>
     </ExpansionPanel>)
   }

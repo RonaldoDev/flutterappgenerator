@@ -16,6 +16,8 @@ import {
   Map as MapIcon,
   Http as HttpIcon,
 } from '@material-ui/icons';
+import i18n from 'i18next';
+
 
 class ComponentList extends Component {
   constructor() {
@@ -36,7 +38,7 @@ class ComponentList extends Component {
                       color="default"
                       style={{ backgroundColor: "#FFFFFF", width: "100%", fontSize: 12}}
                     >
-                      Text
+                      {i18n.t("text")}
                     </Button>
                 </ListItem>);
       case "button":
@@ -46,7 +48,7 @@ class ComponentList extends Component {
               color="default"
               style={{ backgroundColor: "#FFFFFF", width: "100%", fontSize: 12}}
             >
-              Button
+              {i18n.t("button")}
             </Button>
         </ListItem>)
 
@@ -76,7 +78,7 @@ class ComponentList extends Component {
               style={{ backgroundColor: "#FFFFFF", width: "100%", fontSize: 12}}
               startIcon={<EditIcon />}
             >
-              Icon Button
+              {i18n.t("icon-button")}
             </Button>
 
           </ListItem>);
@@ -90,7 +92,7 @@ class ComponentList extends Component {
                 style={{ backgroundColor: "#FFFFFF", width: "100%", fontSize: 12}}
                 startIcon={<CameraArtIcon />}
               >
-                Camera
+                {i18n.t("camera")}
               </Button>
   
             </ListItem>);
@@ -104,7 +106,7 @@ class ComponentList extends Component {
                 style={{ backgroundColor: "#FFFFFF", width: "100%", fontSize: 12 }}
                 startIcon={<MapIcon />}
               >
-                Map
+                {i18n.t("map")}
               </Button>
   
             </ListItem>);
@@ -118,7 +120,7 @@ class ComponentList extends Component {
                 style={{ backgroundColor: "#FFFFFF", width: "100%", fontSize: 12}}
                 startIcon={<HttpIcon />}
               >
-                Web View
+                {i18n.t("web-view")}
               </Button>
   
             </ListItem>);
@@ -127,7 +129,10 @@ class ComponentList extends Component {
         return (
           <div style={{ backgroundColor: "#ebebf0" }}>
           <ListItem key={`${item}${index}`}>
-            <ListItemText primary={<Typography type="body2" style={{ color: '#090C12', fontWeight: "bold",  fontSize: 15 }}>{item}</Typography>} ></ListItemText>
+            <ListItemText primary={
+            <Typography type="body2" style={{ color: '#090C12', fontWeight: "bold",  fontSize: 15 }}>
+             {i18n.t(item)}
+            </Typography>} ></ListItemText>
            
           </ListItem>
             <Divider style={{ height: 2, color:"#828282" }} />
