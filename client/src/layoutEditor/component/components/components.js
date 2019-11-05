@@ -11,7 +11,7 @@ export default (id, item, position) => {
         case 'button':
             return { i: `${id_axis}`, x: 0, y: position, w: 2, h: 1, minW: 2, maxW: 4, maxH: 1}
         case 'iconButton':
-            return { i: `${id_axis}`, x: 0, y: position, w: 1, h: 1, minW: 1, maxW: 4, maxH: 1}
+            return { i: `${id_axis}`, x: 0, y: position, w: 2, h: 1, minW: 1, maxW: 4, maxH: 1}
         case 'appbar':
             return { i: `${id_axis}`, x: 0, y: position, w: 4, h: 1, static: true, isDraggable: false, isResizable: false }
         case 'select':
