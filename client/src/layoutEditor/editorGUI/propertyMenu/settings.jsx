@@ -9,7 +9,7 @@ import {
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import AppSettingsContainer from './appMenu/appSettings.container';
 import ViewSettingsContainer from './viewMenu/viewSettings.container';
-
+import i18n from 'i18next';
 
 class Settings extends Component {
   render() {
@@ -23,7 +23,7 @@ class Settings extends Component {
                 aria-controls="panel1a-content"
                 id="panel1a-header"
               >
-                <Typography style={{ fontSize: "1rem" }} >App Settings</Typography>
+                <Typography style={{ fontSize: "1rem" }} >{i18n.t("app-settings")}</Typography>
               </ExpansionPanelSummary>
             <ExpansionPanelDetails>
               <AppSettingsContainer />
@@ -36,7 +36,7 @@ class Settings extends Component {
                 aria-controls="panel1a-content"
                 id="panel1a-header"
               >
-                <Typography style={{ fontSize: "1rem" }} >View Settings</Typography>
+                <Typography style={{ fontSize: "1rem" }} >{i18n.t("view-settings")}</Typography>
               </ExpansionPanelSummary>
               <ExpansionPanelDetails>
                 <ViewSettingsContainer />
@@ -44,7 +44,7 @@ class Settings extends Component {
             </ExpansionPanel>}
           {view.id !== 0 &&
             <Box style={{ padding: 20 }}>
-              <Typography  style={{ fontSize: "1rem", color: "#090C12" }} >View Settings</Typography>
+              <Typography  style={{ fontSize: "1rem", color: "#090C12" }} >{i18n.t("view-settings")}</Typography>
               <ViewSettingsContainer />
             </Box>
           }

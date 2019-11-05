@@ -5,13 +5,13 @@ const buttons = ['button', 'iconButton'];
 const resources = ['camera', 'map', 'webview'];
 
 export const componentsList = [
-  'Data Displays',
+  'data-displays',
   ...dataDisplays,
-  'Inputs',
+  'inputs',
   ...inputs,
-  'Buttons',
+  'buttons',
   ...buttons,
-  'Resources',
+  'resources',
   ...resources];
 
 export const firstView = {
