@@ -27,7 +27,7 @@ class _SimpleLiveMapPageState extends State<SimpleLiveMapPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Map"),),
+      appBar: AppBar(title: Text($title),),
         body: LiveMap(
       liveMapController: liveMapController,
       mapOptions: MapOptions(

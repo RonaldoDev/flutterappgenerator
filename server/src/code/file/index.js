@@ -9,7 +9,7 @@ function getTemplate(template) {
         case 'home':
             return fs.readFileSync(templatePath + 'main_.dart', 'utf-8');
         default:
-            return fs.readFileSync(templatePath + 'main_.dart', 'utf-8');
+            return fs.readFileSync(templatePath + `${template}_.dart`, 'utf-8');
     }
     
 }
