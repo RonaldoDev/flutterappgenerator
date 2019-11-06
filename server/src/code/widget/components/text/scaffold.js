@@ -1,13 +1,13 @@
 
 const getTemplate = (properties) => {
     const { color, text, fontSize } = properties;
-    const colorString = color === 'default'? 'Colors.blue' : `Color(0xff${color.replace('#', '')})`
+    const colorString = color === 'primary'? 'Colors.blue' : `Color(0xff${color.replace('#', '')})`
     return (
         `Text(
             '${text}',
             textAlign: TextAlign.center,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle( fontSize: ${fontSize}, color: ${colorString}),
+            style: TextStyle( fontSize: ${fontSize * 2}, color: ${colorString}),
           )`);
 };
 

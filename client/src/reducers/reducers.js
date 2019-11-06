@@ -27,6 +27,15 @@ export default function(state = initialState, action) {
   switch (action.type) {
     case ADD_COMPONENT: {
       const { id, content } = action.payload;
+      const tab = { ...state.currentTab,  componentId : content.id, components: [...state.componentsRender, content]};
+      const newViews = state.views.reduce((total, view) => {
+        if (view.id === tab.id) {
+          total.push({...view, components : tab.components});
+          return total;
+        }
+        total.push(view);
+        return total;
+      }, []);
       return {
         ...state,
         allIds: [...state.allIds, id],
@@ -39,15 +48,26 @@ export default function(state = initialState, action) {
         },
         compId: ++state.compId, 
         componentsRender: [...state.componentsRender, content], 
-        currentTab: { ...state.currentTab,  componentId : content.id, components: [...state.componentsRender, content]}
+        currentTab: tab,
+        views: newViews
       };
     };
     case UPDATE_COMPONENTS: {
       const { content } = action.payload;
+      const tab = { ...state.currentTab, components: [...content]};
+      const newViews = state.views.reduce((total, view) => {
+        if (view.id === tab.id) {
+          total.push({...view, components : tab.components});
+          return total;
+        }
+        total.push(view);
+        return total;
+      }, []);
       return {
         ...state,
         componentsRender: [...content],
-        currentTab: { ...state.currentTab, components: [...content]}
+        currentTab: tab,
+        views: newViews
       };
     }
     case SELECT_COMPONENT: {
