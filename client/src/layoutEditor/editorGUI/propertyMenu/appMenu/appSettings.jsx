@@ -11,23 +11,26 @@ class AppSettingsMenu extends Component {
     super();
     this.handleChangeColor = this.handleChangeColor.bind(this);
     this.handleChangeFont = this.handleChangeFont.bind(this);
+    this.handleChangeFontColor = this.handleChangeFontColor.bind(this);
   }
   handleChangeName(value) {
      const newView = { ...this.props.view, appName: value };
-     this.props.save(newView);
+     debugger;
+     this.props.saveName(newView);
   }
   handleChangeColor(color, type) {
-    this.props.saveTheme({ palette: { [type]: { main: color.hex } }});
+    this.props.saveTheme({[type]: { main: color.hex } },  "palette");
   }
   handleChangeFontColor(color, type) {
-    this.props.saveTheme({ palette: { [type]: { main: color.hex } }});
+    this.props.saveTheme({[type]: { contrastText: color.hex } }, "palette");
   }
   handleChangeFont(_, value) {
-    this.props.saveTheme({ typography: { fontSize: value } });
+    this.props.saveTheme({ fontSize: value }, "typography");
   }
   render() {
+    const { view } = this.props;
     return (<Box style={{ height: "500px" }}>   
-        <TextField label="Nome" fullWidth value={this.props.view.appName} onChange={evt => this.props.saveName(evt.target.value)} />
+        <TextField label="Nome" fullWidth value={view.appName} onChange={evt => this.handleChangeName(evt.target.value)} />
         <ThemeSettings
           changeFont={this.handleChangeFont}
           changeFontColor={this.handleChangeFontColor}

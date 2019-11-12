@@ -20,7 +20,7 @@ class LiveMapPage extends StatelessWidget {
       ),
     ];
     return Scaffold(
-      appBar: AppBar(title: Text($title)),
+      appBar: AppBar(title: Text(map)),
       body: Padding(
         padding: EdgeInsets.all(8.0),
         child: Column(

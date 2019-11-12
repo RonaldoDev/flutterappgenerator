@@ -12,19 +12,6 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 
 class ThemeSettings extends Component {
-  constructor() {
-    super();
-    this.handleChangeColor = this.handleChangeColor.bind(this);
-    this.handleChangeFont = this.handleChangeFont.bind(this);
-  }
-
-  handleChangeColor(color, type) {
-    this.props.save({ palette: { [type]: { main: color.hex } }});
-  }
-  
-  handleChangeFont(_, value) {
-    this.props.save({ typography: { fontSize: value } });
-  }
   render() {
     const { changeColor, changeFont, changeFontColor, theme } = this.props;
     return (<Box>

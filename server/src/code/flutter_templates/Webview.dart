@@ -6,10 +6,10 @@ class WebViewPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text($title),
+        title: Text(Webview),
       ),
       body: WebView(
-  initialUrl: $url,
+  initialUrl: 'https://ufsc.br',
   javascriptMode: JavascriptMode.unrestricted,
 ), 
     );
