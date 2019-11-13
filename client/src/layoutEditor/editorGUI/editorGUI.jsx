@@ -87,7 +87,7 @@ class EditorGUI extends Component {
             </AppBar>
             <ReactGridLayout cols={4}
               onLayoutChange={this.onLayoutChange}
-              rowHeight={40}
+              rowHeight={45}
               width={340}
               static={false}
               isDraggable={true}
@@ -95,7 +95,7 @@ class EditorGUI extends Component {
               compactType={null}
               preventCollision={true}
               isResizable={true}
-              className="layout" maxRows={10} layout={layout} >
+              className="layout" maxRows={9} layout={layout} >
               {components.map(item => this.renderItems(item))}
             </ReactGridLayout>
           </div>

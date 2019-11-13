@@ -27,7 +27,7 @@ export const theme = {
   typography: {
     useNextVariants: true,
     fontSize: 14,
-    color: "#009be5"
+    color: "#FFFFFF"
   },
   palette: {
     primary: {

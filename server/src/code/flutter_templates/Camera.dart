@@ -8,19 +8,18 @@ import 'package:path_provider/path_provider.dart';
 
 
 // A screen that allows users to take a picture using a given camera.
-class TakePictureScreen extends StatefulWidget {
+class CameraPage extends StatefulWidget {
   final CameraDescription camera;
-
-  const TakePictureScreen({
+  const CameraPage({
     Key key,
     @required this.camera,
   }) : super(key: key);
 
   @override
-  TakePictureScreenState createState() => TakePictureScreenState();
+  CameraPageState createState() => CameraPageState();
 }
 
-class TakePictureScreenState extends State<TakePictureScreen> {
+class CameraPageState extends State<CameraPage> {
   CameraController _controller;
   Future<void> _initializeControllerFuture;
 
@@ -28,7 +27,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
   void initState() {
     super.initState();
     // To display the current output from
-     the Camera,
+    // the Camera,
     // create a CameraController.
     _controller = CameraController(
       // Get a specific camera from the list of available cameras.

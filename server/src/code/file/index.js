@@ -7,9 +7,11 @@ const flutterPath = `${app_path}/src/code/flutter_templates/`; // flutter_app/he
 function getTemplate(template) {
     switch(template){
         case 'home':
-            return fs.readFileSync(templatePath + 'main_.dart', 'utf-8');
+            return fs.readFileSync(templatePath + '_view.dart', 'utf-8');
+        case 'firstPage':
+            return fs.readFileSync(templatePath + '_main.dart', 'utf-8');
         default:
-            return fs.readFileSync(templatePath + `${template}_.dart`, 'utf-8');
+            return fs.readFileSync(templatePath + `_${template}.dart`, 'utf-8');
     }
     
 }

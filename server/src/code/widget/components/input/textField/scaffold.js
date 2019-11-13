@@ -1,11 +1,10 @@
 
 const textField = (properties) => {
-    const { color, text } = properties;
-    const colorString = color === 'default'? 'Colors.blue' : `Color(0xff${color.replace('#', '')})`
+    const { text } = properties;
     return `
         TextField(
             keyboardType: TextInputType.text,
-            style: TextStyle(color: ${colorString}, fontSize: 30),
+            style: TextStyle(fontSize: 14),
             decoration: 
                 InputDecoration(
                     labelText:"${text}",

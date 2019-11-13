@@ -1,11 +1,14 @@
 const { getAction } = require('./behaviors');
 
 const getTemplate = (properties) => {
-    const { color, text, action } = properties;
-    const colorString = color === 'default'? 'Colors.blue' : `Color(0xff${color.replace('#', '')})`
+    const { color, text, action, theme } = properties;
+    const colorString = theme === 'primary' ? 
+    'color: Theme.of(context).primaryColor,' : theme === 'secondary' ? 
+    'color: Theme.of(context).accentColor,' : theme === 'custom' ?
+    `color: Color(0xff${color.replace('#', '')}),` : '';
     const actionPressed = getAction(action);
     return `FlatButton(
-            color: ${colorString},
+            ${colorString}
             textColor: Colors.white,
             disabledColor: Colors.grey,
             disabledTextColor: Colors.black,
