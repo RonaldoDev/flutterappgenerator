@@ -2,10 +2,10 @@
 const flexible = (component) => {
     return `Flexible(
             fit: FlexFit.tight,
-            child: Padding(
+            child: Center( child: Padding(
                     padding: EdgeInsets.all(8.0),
                     child:${component}
-                )
+                ))
             )`
 };
 

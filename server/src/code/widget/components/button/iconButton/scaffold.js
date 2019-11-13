@@ -5,8 +5,11 @@ const textLabel = require('../../text/scaffold').text;
 
 
 const getTemplate = (properties) => {
-    const { color, text, action, icon } = properties;
-    const colorString = color === 'primary' ? 'Colors.blue' : `Color(0xff${color.replace('#', '')})`
+    const { color, text, action, icon, theme } = properties;
+    const colorString = theme === 'primary' ? 
+        'color: Theme.of(context).primaryColor,' : theme === 'secondary' ? 
+        'color: Theme.of(context).accentColor,' : theme === 'custom' ?
+        `color: Color(0xff${color.replace('#', '')}),` : '';
     const actionPressed = getAction(action);
     const label = text ? `${textLabel(properties).template},` : '';
     return (
@@ -16,7 +19,7 @@ const getTemplate = (properties) => {
             ${label}
             IconButton(
                 icon: Icon(Icons.${icon}),
-                color: ${colorString},
+                ${colorString}
                 iconSize: 48,
                 onPressed: () {
                 ${actionPressed}
@@ -38,9 +41,6 @@ const iconButton = (properties) => ({
 module.exports = {
     iconButton
 }
-
-
-
 
 
 

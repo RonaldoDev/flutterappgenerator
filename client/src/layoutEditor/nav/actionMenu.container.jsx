@@ -16,13 +16,16 @@ class ActionMenuContainer extends Component {
         this.handleSave = this.handleSave.bind(this);   
     }
     handleGenerateSource = () => {
-        const { views } = this.props;
+        const { views, theme } = this.props;
+        const viewTheme = { ...views[0], ...theme };
+        console.log(viewTheme)
+        const viewGenerate = [viewTheme, ...views.splice(1)]
         fetch('v1/generate', {
             method: 'post',
             headers: new Headers({
               'Content-Type': 'application/json'
               }),
-            body: JSON.stringify(views)}).then(response => {
+            body: JSON.stringify(viewGenerate)}).then(response => {
                 response.blob().then(blob => {
 					const url = window.URL.createObjectURL(blob);
 					let a = document.createElement('a');
@@ -35,7 +38,7 @@ class ActionMenuContainer extends Component {
     };
     handleSave = (user) => {
         const { compId, views, theme } = this.props;
-        
+        debugger;
         firebase.database().ref('template/' + user.uid).set({
             username: user.email,
             views: JSON.stringify(views),

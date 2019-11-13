@@ -1,57 +1,29 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
-import 'package:latlong/latlong.dart';
 
-class LiveMapPage extends StatelessWidget {
+import 'package:flutter/material.dart';
+
+
+class Map extends StatefulWidget {
+  Map({Key key, this.camera}) : super(key: key);
+
+  @override
+  _MapState createState() => _MapState();
+}
+
+class _MapState extends State<Map> {
+  
   @override
   Widget build(BuildContext context) {
-    var markers = <Marker>[
-      Marker(
-        width: 80.0,
-        height: 80.0,
-        point: LatLng(-27.60, -48.52),
-        builder: (ctx) => Container(
-          child: Icon(
-            Icons.room,
-            color: Colors.red,
-            size: 50.0,
-          ),
-        ),
-      ),
-    ];
     return Scaffold(
-      appBar: AppBar(title: Text(map)),
-      body: Padding(
-        padding: EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(top: 8.0, bottom: 8.0),
-              child: Text('This is a map that is showing (-27.60, -48.52).'),
-            ),
-            Flexible(
-              child: FlutterMap(
-                options: MapOptions(
-                  center: LatLng(-27.60, -48.52),
-                  zoom: 15.0,
-                ),
-                layers: [
-                  TileLayerOptions(
-                    urlTemplate:
-                        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                    subdomains: ['a', 'b', 'c'],
-                    // For example purposes. It is recommended to use
-                    // TileProvider with a caching and retry strategy, like
-                    // NetworkTileProvider or CachedNetworkTileProvider
-                    // tileProvider: NonCachingNetworkTileProvider(),
-                  ),
-                  MarkerLayerOptions(markers: markers)
-                ],
-              ),
-            ),
-          ],
+        appBar: AppBar(
+          title: Text("Map"),
         ),
-      ),
+        body: Container(
+            padding: EdgeInsets.all(15),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[Row(children: <Widget>[Container(height: 50)]),Row(children: <Widget>[Container(height: 50)]),Row(children: <Widget>[Container(height: 50)]),Row(children: <Widget>[Container(height: 50)]),Row(children: <Widget>[Container(height: 50)]),Row(children: <Widget>[Container(height: 50)]),Row(children: <Widget>[Container(height: 50)]),Row(children: <Widget>[Container(height: 50)]),Row(children: <Widget>[Container(height: 50)]),Row(children: <Widget>[Container(height: 50)]),Row(children: <Widget>[Container(height: 50)])],
+            ),
+        )
     );
   }
 }

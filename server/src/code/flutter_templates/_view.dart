@@ -1,9 +1,10 @@
-
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 $import
 
 class $title extends StatefulWidget {
-  $title({Key key}) : super(key: key);
+  final CameraDescription camera ;
+  $title({Key key, this.camera}) : super(key: key);
 
   @override
   _$titleState createState() => _$titleState();
