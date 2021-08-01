@@ -3,9 +3,6 @@ Project made by undergraduate thesis at Universidade Federal de Santa Catarina.
 http://flutterappgenerator.herokuapp.com
 Travis-CI:  ![Travis](https://travis-ci.com/RonaldoDev/flutterappgenerator.svg?branch=develop)
 
-## THIS PROJECT IS WORK IN PROGRESS AND WILL BE RELEASE IN NOVEMBER 4th
-When monography finished, this file will be improved.
-
 Using a graphical interface you can generate cross-platform app's base on Dart/Flutter.
 
 Our architecture
